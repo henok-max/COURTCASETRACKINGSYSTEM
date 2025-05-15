@@ -1,0 +1,15 @@
+@model CourtCaseTrackingSystem.ViewModels.CaseConfirmationViewModel;
+
+<div class="container">
+    <div class="alert alert-success">
+        <h4>Case Registered Successfully!</h4>
+        <p>Case Number: <strong>@Model.CaseNumber</strong></p>
+    </div>
+
+    <a asp-controller="Dashboard" asp-action="RegistrarDashboard" class="btn btn-primary">
+        Return to Dashboard
+    </a>
+    <a asp-action="Register" class="btn btn-secondary">
+        Register Another Case
+    </a>
+</div>

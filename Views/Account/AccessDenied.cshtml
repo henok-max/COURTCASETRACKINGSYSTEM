@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Access Denied";
+}
+
+<div class="container mt-5">
+    <div class="alert alert-danger" role="alert">
+        <h2 class="alert-heading">
+            <i class="fas fa-ban me-2"></i>Access Denied
+        </h2>
+        <p class="mb-0">
+            You don't have permission to access this resource.
+            <br>
+            <small>Requested URL: @Context.Request.Query["ReturnUrl"]</small>
+        </p>
+    </div>
+
+    <div class="mt-4">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">
+            <i class="fas fa-home me-2"></i>Return to Home
+        </a>
+    </div>
+</div>

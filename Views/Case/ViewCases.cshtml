@@ -1,0 +1,119 @@
+@using CourtCaseTrackingSystem.Models;
+
+
+@model CourtCaseTrackingSystem.ViewModels.CaseSearchViewModel;
+@{
+
+}
+<div class="container">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3><i class="fas fa-search me-2"></i>Case Management</h3>
+        </div>
+
+        <div class="card-body">
+            <!-- Search Form -->
+            <form method="get" class="mb-4">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <select asp-for="SearchType" asp-items="Model.SearchTypes" class="form-select">
+                            <option value="">All Cases</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input asp-for="SearchString" class="form-control" placeholder="Search term...">
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-search me-2"></i>Search
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Case List -->
+            @if (Model.Cases.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Case Number</th>
+                                <th>Title</th>
+                                <th>Plaintiff</th>
+                                <th>Defendant</th>
+                                <th>Status</th>
+                                <th>Judge</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var caseItem in Model.Cases)
+                            {
+                                <tr>
+                                    <td>@caseItem.CaseNumber</td>
+                                    <td>@caseItem.Title</td>
+                                    <td>@caseItem.PlaintiffName</td>
+                                    <td>@caseItem.DefendantName</td>
+                                    <td>
+                                        <span class="badge @GetStatusBadgeClass(caseItem.Status)">
+                                            @caseItem.Status
+                                        </span>
+                                    </td>
+                                    <td>@caseItem.AssignedJudge?.UserName</td>
+                                    <td>
+                                        <a asp-action="Details" asp-route-id="@caseItem.CaseID"
+                                            class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        @if (caseItem.Status == "Closed")
+                                        {
+                                            <button class="btn btn-sm btn-outline-warning" disabled
+                                                title="Re-registration coming soon">
+                                                <i class="fas fa-redo"></i>
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        @for (int i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                                <a class="page-link" asp-action="ViewCases" asp-route-page="@i"
+                                    asp-route-searchString="@Model.SearchString" asp-route-searchType="@Model.SearchType">
+                                    @i
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    No cases found matching your criteria
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@functions {
+    string GetStatusBadgeClass(string status)
+    {
+        return status switch
+        {
+            "Pending" => "bg-warning",
+            "Closed" => "bg-secondary",
+            "InProgress" => "bg-primary",
+            _ => "bg-light text-dark"
+        };
+    }
+}

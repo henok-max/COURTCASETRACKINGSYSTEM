@@ -1,0 +1,183 @@
+@using CourtCaseTrackingSystem.ViewModels
+@using CourtCaseTrackingSystem.Models
+@model CourtCaseTrackingSystem.ViewModels.JudgeDashboardViewModel
+@{
+    ViewData["Title"] = "Judge Dashboard";
+    ViewData["ActivePage"] = "JudgeDashboard";
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+
+            <div class="container">
+
+                <div class="collapse navbar-collapse justify-content-end">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav-link-custom me-3" asp-controller="Home" asp-action="Index">
+                            <i class="fas fa-sign-in-alt me-1"></i> Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mt-4 text-primary">
+            <i class="fas fa-gavel me-2"></i>Judge Dashboard
+        </h1>
+        <a asp-action="ViewCases" class="btn btn-outline-primary">
+            <i class="fas fa-hourglass-half me-2"></i>View All Cases
+        </a>
+        <a asp-action="ViewPendingCases" class="btn btn-outline-primary">
+            <i class="fas fa-hourglass-half me-2"></i>Pending Cases
+        </a>
+    </div>
+
+    <div class="row">
+        <!-- Statistics Cards -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-start border-primary border-4 shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs fw-bold text-primary text-uppercase mb-1">
+                                Total Cases
+                            </div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">@Model.TotalCases</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-start border-warning border-4 shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs fw-bold text-warning text-uppercase mb-1">
+                                Pending Cases
+                            </div>
+                            <div class="h5 mb-0 fw-bold text-gray-800">@Model.PendingCases</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hourglass-half fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Cases Card -->
+    <div class="card-body">
+        <div class="card-header bg-primary text-white py-3"></div>
+        <h6 class="m-0 fw-bold">
+            <i class="fas fa-clock me-2"></i>Recent Cases
+        </h6>
+
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Case Number</th>
+                    <th>Title</th>
+                    <th>Plaintiff</th>
+                    <th>Defendant</th>
+                    <th>Registration Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model?.RecentCases?.Any() == true)
+                {
+                    @foreach (var caseItem in Model.RecentCases)
+                    {
+                        <tr class="clickable-row"
+                            onclick="window.location='@Url.Action("Details", "Case", new { id = caseItem.CaseID })'">
+                            <td>@caseItem.CaseNumber</td>
+                            <td>@caseItem.Title</td>
+                            <td>@caseItem.PlaintiffName</td>
+                            <td>@caseItem.DefendantName</td>
+                            <td>@caseItem.RegistrationDate.ToString("dd MMM yyyy")</td>
+                            <td>
+                                <span class="badge @GetStatusBadgeClass(caseItem.Status)">
+                                    @caseItem.Status
+                                </span>
+                            </td>
+
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-center py-4">
+                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                            <p class="text-muted">No recent cases found</p>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</div>
+
+@functions {
+    string GetStatusBadgeClass(string status)
+    {
+        return status?.ToLower() switch
+        {
+            "pending" => "bg-warning",
+
+            "accepted" => "bg-success",
+
+            "opened" => "bg-success",
+
+            "closed" => "bg-secondary",
+            _ => "bg-light text-dark"
+        };
+    }
+}
+
+@section Styles {
+    <style>
+        .clickable-row {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .clickable-row:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+            transform: translateX(4px);
+        }
+
+        .badge {
+            font-size: 0.85em;
+            padding: 0.5em 0.75em;
+            min-width: 80px;
+        }
+
+        .table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        .fa-user-shield {
+            color: #6c757d;
+        }
+    </style>
+}

@@ -1,0 +1,153 @@
+﻿@{
+    ViewData["Title"] = "East Gojjam High Court - Case Tracking System";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 4rem 0;
+            border-bottom: 1px solid #dee2e6;
+            height: auto;
+        }
+
+        .court-icon {
+            font-size: 4rem;
+            color: #2c3e50;
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease;
+            border: none;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .nav-link-custom {
+            color: #2c3e50 !important;
+            font-weight: 500;
+        }
+
+        .nav-link-custom:hover {
+            color: #3498db !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+
+                <div class="container">
+
+                    <div class="collapse navbar-collapse justify-content-end">
+                        <div class="navbar-nav">
+                            <a class="nav-link nav-link-custom me-3" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-sign-in-alt me-1"></i> Home</a>
+
+                            <a class="nav-link nav-link-custom me-3" asp-controller="Account" asp-action="Login">
+                                <i class="fas fa-sign-in-alt me-1"></i>Login
+                            </a>
+                            <a class="btn btn-outline-primary" href="#">
+                                <i class="fas fa-portrait me-1"></i>Public Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </nav>
+
+
+
+
+        </div>
+        </nav>
+    </header>
+    <!-- Navigation -->
+
+    <!-- Hero Section -->
+    <div class="hero-section" style="max-width: 1200px; margin: auto 70px;">
+        <div class="container text-center">
+            <i class="fas fa-balance-scale court-icon mb-4"></i>
+            <h1 class="display-4 mb-3">East Gojjam High Court</h1>
+            <p class="lead text-muted">Digital Case Management & Tracking System</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-search fa-3x text-primary mb-3"></i>
+                        <h5>Case Tracking</h5>
+                        <p class="text-muted">Real-time updates on case status and proceedings</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-alt fa-3x text-success mb-3"></i>
+                        <h5>Hearing Schedule</h5>
+                        <p class="text-muted">Access court schedules and calendar events</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-file-contract fa-3x text-info mb-3"></i>
+                        <h5>Digital Filing</h5>
+                        <p class="text-muted">Secure document submission and management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i>Debre Markos, East Gojjam</li>
+                        <li><i class="fas fa-phone me-2"></i>+251 XXX XXX XXX</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@eghc.gov.et</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none text-dark"><i
+                                    class="fas fa-scale-balanced me-2"></i>Court Rules</a></li>
+                        <li><a href="#" class="text-decoration-none text-dark"><i class="fas fa-book me-2"></i>Legal
+                                Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Operating Hours</h5>
+                    <ul class="list-unstyled">
+                        <li>Mon-Fri: 8:30 AM - 5:30 PM</li>
+                        <li>Saturday: 9:00 AM - 12:30 PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+@model CaseSearchViewModel
+@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery Antiforgery
+
+@{
+    ViewData["Title"] = "Pending Cases";
+    ViewData["ActivePage"] = "ViewPendingCases";
+    var token = Antiforgery.GetAndStoreTokens(Context).RequestToken;
+}
+
+<div class="container-fluid px-4">
+    <div class="card shadow mb-4">
+        <div class="card-header bg-warning text-dark py-3">
+            <h6 class="m-0 fw-bold">
+                <i class="fas fa-exclamation-triangle me-2"></i>Pending Cases
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-warning mb-4">
+                <i class="fas fa-info-circle me-2"></i>
+                Showing @Model.TotalItems pending cases requiring your attention
+            </div>
+
+            <form method="get" class="mb-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search pending cases..." name="searchString"
+                        value="@Model.SearchString">
+                    <select class="form-select" name="searchType">
+                        <option value="CaseNumber" selected="@(Model.SearchType == "CaseNumber")">Case Number</option>
+                        <option value="Title" selected="@(Model.SearchType == "Title")">Title</option>
+                        <option value="Plaintiff" selected="@(Model.SearchType == "Plaintiff")">Plaintiff</option>
+                        <option value="Defendant" selected="@(Model.SearchType == "Defendant")">Defendant</option>
+                    </select>
+                    <button class="btn btn-warning" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead class="table-warning">
+                        <tr>
+                            <th>Case Number</th>
+                            <th>Title</th>
+                            <th>Days Pending</th>
+                            <th>Plaintiff</th>
+                            <th>Defendant</th>
+                            <th>Registration Date</th>
+                            <th>Document</th>
+                            <th>Decision</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Cases?.Any() == true)
+                        {
+                            @foreach (var caseItem in Model.Cases)
+                            {
+                                <tr>
+                                    <td>@caseItem.CaseNumber</td>
+                                    <td>@caseItem.Title</td>
+                                    <td>
+                                        <span class="badge bg-warning">
+                                            @((DateTime.Now - caseItem.RegistrationDate).Days)d
+                                        </span>
+                                    </td>
+                                    <td>@caseItem.PlaintiffName</td>
+                                    <td>@caseItem.DefendantName</td>
+                                    <td>@caseItem.RegistrationDate.ToString("dd MMM yyyy")</td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(caseItem.DocumentPath))
+                                        {
+                                            <a href="#" class="document-preview"
+                                                data-url="@Url.Action("DownloadDocument", "Case", new { filePath = caseItem.DocumentPath, download = false })"
+                                                data-case-id="@caseItem.CaseID">
+                                                <i class="fas fa-file-pdf text-danger"></i> View Document
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">N/A</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-warning decision-btn"
+                                            data-case-id="@caseItem.CaseID">
+                                            <i class="fas fa-gavel"></i> Review Case
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center py-4">
+                                    <i class="fas fa-check-circle fa-2x text-muted mb-3"></i>
+                                    <p class="text-muted">No pending cases found</p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <nav>
+                <ul class="pagination justify-content-center">
+                    @for (int i = 1; i <= (Model.TotalItems / Model.PageSize) + 1; i++)
+                    {
+                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                            <a class="page-link" asp-action="ViewPendingCases" asp-route-page="@i"
+                                asp-route-pageSize="@Model.PageSize" asp-route-searchString="@Model.SearchString"
+                                asp-route-searchType="@Model.SearchType">
+                                @i
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Decision Modal -->
+<div class="modal fade" id="decisionModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title">Case Decision</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="decisionForm">
+                    <input type="hidden" id="caseId" name="CaseId">
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Decision Type</label>
+                        <select class="form-select" name="Decision" id="decision" required>
+                            <option value="">-- Select Decision --</option>
+                            <option value="accept">Accept Case</option>
+                            <option value="decline">Decline Case</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3" id="dateField" style="display: none;">
+                        <label class="form-label fw-bold">Summon Date</label>
+                        <input type="date" class="form-control" name="SummonDate"
+                            min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                            max="@DateTime.Today.AddMonths(3).ToString("yyyy-MM-dd")">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Comments</label>
+                        <textarea class="form-control" name="Comments" rows="3" required></textarea>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-warning">
+                            <i class="fas fa-check-circle me-2"></i>Submit Decision
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const token = '@token';
+
+            // Document preview handling
+            document.querySelectorAll('.document-preview').forEach(link => {
+                link.addEventListener('click', async function (e) {
+                    e.preventDefault();
+                    const url = this.dataset.url;
+                    const caseId = this.dataset.caseId;
+
+                    try {
+                        const response = await fetch(url, {
+                            headers: {
+                                'RequestVerificationToken': token
+                            }
+                        });
+
+                        if (response.ok) {
+                            const blob = await response.blob();
+                            const objectUrl = URL.createObjectURL(blob);
+                            window.open(objectUrl, '_blank');
+                        } else {
+                            alert('You are not authorized to view this document');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Error loading document');
+                    }
+                });
+            });
+
+            // Decision modal handling
+            document.querySelectorAll('.decision-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.getElementById('caseId').value = this.dataset.caseId;
+                    new bootstrap.Modal(document.getElementById('decisionModal')).show();
+                });
+            });
+
+            // Decision type toggle
+            document.getElementById('decision').addEventListener('change', function () {
+                document.getElementById('dateField').style.display =
+                    this.value === 'accept' ? 'block' : 'none';
+            });
+
+            // Form submission
+            document.getElementById('decisionForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = {
+                    CaseId: document.getElementById('caseId').value,
+                    Decision: document.getElementById('decision').value,
+SummonDate: document.querySelector('[name="SummonDate"]')?.value || null,
+                    Comments: document.querySelector('[name="Comments"]').value
+                };
+
+                try {
+                    const response = await fetch('@Url.Action("ProcessDecision", "Case")', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': token
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        const error = await response.text();
+                        alert(`Error: ${error}`);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred while processing your request');
+                }
+            });
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .document-preview {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .document-preview:hover {
+            color: #dc3545 !important;
+        }
+
+        .decision-btn {
+            transition: all 0.2s;
+        }
+
+        .decision-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(255, 193, 7, 0.05);
+        }
+
+        .badge.bg-warning {
+            min-width: 70px;
+            padding: 0.5em 0.75em;
+        }
+    </style>
+}

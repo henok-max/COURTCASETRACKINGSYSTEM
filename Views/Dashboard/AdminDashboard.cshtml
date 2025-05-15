@@ -1,0 +1,145 @@
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<CourtCaseTrackingSystem.Models.ApplicationUser>
+@inject UserManager<CourtCaseTrackingSystem.Models.ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+
+            <div class="container">
+
+                <div class="collapse navbar-collapse justify-content-end">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav-link-custom me-3" asp-controller="Home" asp-action="Index">
+                            <i class="fas fa-sign-in-alt me-1"></i> Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container mt-4">
+    <h2 class="mb-4"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h2>
+
+    <!-- Quick Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Total Users</h5>
+                    <p class="card-text display-4">@Model.Count()</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Active Users</h5>
+                    <p class="card-text display-4">@Model.Count(u => u.Status == "Active")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Management Table -->
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="fas fa-users-cog"></i> User Management</h5>
+                <a asp-controller="UserManagement" asp-action="Create" class="btn btn-sm btn-light">
+                    <i class="fas fa-plus-circle"></i> Create New User
+                </a>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Roles</th>
+                            <th>Last Login</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.UserName</td>
+                                <td>@user.Email</td>
+                                <td>
+    <span class="badge @(user.Status == "Active" ? "bg-success text-white" : "bg-danger text-white") p-2">
+        @user.Status
+    </span>
+</td>
+                                <td>
+                                    @{
+                                        var roles = await UserManager.GetRolesAsync(user);
+                                        @string.Join(", ", roles)
+                                    }
+                                </td>
+                                <td>@user.LastLoginDate?.ToString("g")</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a asp-controller="UserManagement" asp-action="Edit" asp-route-id="@user.Id"
+                                            class="btn btn-sm btn-warning" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+
+                                        <form asp-controller="UserManagement"
+                                            asp-action="@(user.Status == "Active" ? "Deactivate" : "Activate")"
+                                            method="post" class="d-inline">
+                                            <input type="hidden" name="id" value="@user.Id" />
+                                            <button type="submit"
+                                                class="btn btn-sm @(user.Status == "Active" ? "btn-danger" : "btn-success")"
+                                                title="@(user.Status == "Active" ? "Deactivate" : "Activate")">
+                                                @if (user.Status == "Active")
+                                                {
+                                                    <i class="fas fa-user-slash"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fas fa-user-check"></i>
+                                                }
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+    .empty-state {
+        text-align: center;
+        padding: 2rem;
+        color: #6c757d;
+    }
+
+    .empty-state i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+    }
+</style>
+
+@if (!Model.Any())
+{
+    <div class="empty-state mt-4">
+        <i class="fas fa-user-friends"></i>
+        <h4>No users found</h4>
+        <p>Start by creating a new user account</p>
+    </div>
+}

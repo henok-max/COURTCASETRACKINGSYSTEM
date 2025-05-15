@@ -1,0 +1,381 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CourtCaseTrackingSystem.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CourtCaseTrackingSystem.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\1bfa8b12-abb4-4b4c-ae39-2bcad849aaf3.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\1bfa8b12-abb4-4b4c-ae39-2bcad849aaf3.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\296a66ac-7c5f-4761-842f-1b3f5137689c.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\296a66ac-7c5f-4761-842f-1b3f5137689c.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\5269d9df-6581-46de-a128-b5853a4b48df.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\5269d9df-6581-46de-a128-b5853a4b48df.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\56369c76-8e63-4080-b41a-d033207058f4.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\56369c76-8e63-4080-b41a-d033207058f4.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\90c8156d-5702-4f8a-9f4e-31d14427464e.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\90c8156d-5702-4f8a-9f4e-31d14427464e.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\939b72c2-8a79-4a62-a0be-22cedcc7f4de.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\939b72c2-8a79-4a62-a0be-22cedcc7f4de.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\9bcc4b19-8228-48e4-b0cc-2568517ad10d.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\9bcc4b19-8228-48e4-b0cc-2568517ad10d.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\9cbaf52d-f5c2-48d7-af08-695665c3ca5c.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\9cbaf52d-f5c2-48d7-af08-695665c3ca5c.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\9e30c69a-fa1e-4ec2-b92a-4808764bf75c.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\9e30c69a-fa1e-4ec2-b92a-4808764bf75c.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\a1524458-5e9b-479a-8ab7-bd734ea0b60f.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\a1524458-5e9b-479a-8ab7-bd734ea0b60f.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\ac12b3ed-d2ed-4713-b0d3-b2e93700d94a.doc",
+      "PackagePath": "staticwebassets\\CaseDocuments\\ac12b3ed-d2ed-4713-b0d3-b2e93700d94a.doc"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\b2a2f181-adf9-4524-84db-a42dd0e579c4.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\b2a2f181-adf9-4524-84db-a42dd0e579c4.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\b498d2aa-de42-468d-838c-e4bba960111f.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\b498d2aa-de42-468d-838c-e4bba960111f.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\b4b50126-d6c4-4b02-8b0f-34be7fee11bd.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\b4b50126-d6c4-4b02-8b0f-34be7fee11bd.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\b79b32d9-dd30-4eff-bf37-1527eb57d8fa.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\b79b32d9-dd30-4eff-bf37-1527eb57d8fa.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\befc1003-02b6-4545-b229-b3af03094e0b.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\befc1003-02b6-4545-b229-b3af03094e0b.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\ea1d5673-36a5-4b6a-9ec0-49957b798aaa.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\ea1d5673-36a5-4b6a-9ec0-49957b798aaa.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\f089f272-a07d-4a44-bc70-f4f8cfaa1d2a.pdf",
+      "PackagePath": "staticwebassets\\CaseDocuments\\f089f272-a07d-4a44-bc70-f4f8cfaa1d2a.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\DefenseDocuments\\18f96fc4-6c34-439c-a835-43fbfd07df2b.pdf",
+      "PackagePath": "staticwebassets\\DefenseDocuments\\18f96fc4-6c34-439c-a835-43fbfd07df2b.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\DefenseDocuments\\a2491239-4919-479f-b555-5b5f28e3b6ae.pdf",
+      "PackagePath": "staticwebassets\\DefenseDocuments\\a2491239-4919-479f-b555-5b5f28e3b6ae.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250420-0001_6ca1d66ea87e42afa903fc57be26a097.pdf",
+      "PackagePath": "staticwebassets\\Summons\\Summon_CASE-20250420-0001_6ca1d66ea87e42afa903fc57be26a097.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250420-0002_3055142d55bb47fb9cf76df73c615a99.pdf",
+      "PackagePath": "staticwebassets\\Summons\\Summon_CASE-20250420-0002_3055142d55bb47fb9cf76df73c615a99.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250509-0001_b1e0e186a2de426a925103bccf82422a.pdf",
+      "PackagePath": "staticwebassets\\Summons\\Summon_CASE-20250509-0001_b1e0e186a2de426a925103bccf82422a.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250509-0002_44224114768b41f9884fc3ca966f5325.pdf",
+      "PackagePath": "staticwebassets\\Summons\\Summon_CASE-20250509-0002_44224114768b41f9884fc3ca966f5325.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250513-0001_91067c5820c24b19b4c97ffb14d68397.pdf",
+      "PackagePath": "staticwebassets\\Summons\\Summon_CASE-20250513-0001_91067c5820c24b19b4c97ffb14d68397.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250513-0002_b15180ff770a41649c6856939c5e95f5.pdf",
+      "PackagePath": "staticwebassets\\Summons\\Summon_CASE-20250513-0002_b15180ff770a41649c6856939c5e95f5.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250513-0003_ab34e163465c4cad8c503fb402c1f3c1.pdf",
+      "PackagePath": "staticwebassets\\Summons\\Summon_CASE-20250513-0003_ab34e163465c4cad8c503fb402c1f3c1.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250514-0002_7421161d96b54d1e9f0153f8dc73d5db.pdf",
+      "PackagePath": "staticwebassets\\Summons\\Summon_CASE-20250514-0002_7421161d96b54d1e9f0153f8dc73d5db.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\WitnessDocuments\\2d507d5d-d8a0-4d5d-bf21-5751074174c8.pdf",
+      "PackagePath": "staticwebassets\\WitnessDocuments\\2d507d5d-d8a0-4d5d-bf21-5751074174c8.pdf"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CourtCaseTrackingSystem.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.CourtCaseTrackingSystem.props",
+      "PackagePath": "build\\CourtCaseTrackingSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.CourtCaseTrackingSystem.props",
+      "PackagePath": "buildMultiTargeting\\CourtCaseTrackingSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.CourtCaseTrackingSystem.props",
+      "PackagePath": "buildTransitive\\CourtCaseTrackingSystem.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,119 @@
+@model CaseSearchViewModel
+
+@{
+    ViewData["Title"] = "View Cases";
+    ViewData["ActivePage"] = "ViewCases";
+}
+
+<div class="container-fluid px-4">
+    <div class="card shadow mb-4">
+        <div class="card-header bg-primary text-white py-3">
+            <h6 class="m-0 fw-bold">
+                <i class="fas fa-search me-2"></i>Case Search
+            </h6>
+        </div>
+        <div class="card-body">
+            <form method="get" class="mb-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search cases..." name="searchString"
+                        value="@Model.SearchString">
+                    <select class="form-select" name="searchType">
+                        <option value="CaseNumber" selected="@(Model.SearchType == "CaseNumber")">Case Number</option>
+                        <option value="Title" selected="@(Model.SearchType == "Title")">Title</option>
+                        <option value="Plaintiff" selected="@(Model.SearchType == "Plaintiff")">Plaintiff</option>
+                        <option value="Defendant" selected="@(Model.SearchType == "Defendant")">Defendant</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Case Number</th>
+                            <th>Title</th>
+                            <th>Plaintiff</th>
+                            <th>Defendant</th>
+                            <th>Registration Date</th>
+                            <th>Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var caseItem in Model.Cases)
+                        {
+ <tr class="clickable-row"
+                            onclick="window.location='@Url.Action("Details", "Case", new { id = caseItem.CaseID })'">
+                                <td>@caseItem.CaseNumber</td>
+                                <td>@caseItem.Title</td>
+
+                                <td>@caseItem.PlaintiffName</td>
+                                <td>@caseItem.DefendantName</td>
+                                <td>@caseItem.RegistrationDate.ToString("dd MMM yyyy")</td>
+                                <td>
+                                    <span class="badge @GetStatusBadgeClass(caseItem.Status)">
+                                        @caseItem.Status
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <nav>
+                <ul class="pagination justify-content-center">
+                    @for (int i = 1; i <= (Model.TotalItems / Model.PageSize) + 1; i++)
+                    {
+                        <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                            <a class="page-link" asp-action="ViewCases" asp-route-page="@i"
+                                asp-route-pageSize="@Model.PageSize" asp-route-searchString="@Model.SearchString"
+                                asp-route-searchType="@Model.SearchType">
+                                @i
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+@functions {
+    string GetStatusBadgeClass(string status)
+    {
+        return status switch
+        {
+            "opened" => "bg-success",
+            "closed" => "bg-secondary",
+            "pending" => "bg-warning",
+            _ => "bg-primary"
+        };
+    }
+}
+
+@section Styles {
+    <style>
+        .clickable-row {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .clickable-row:hover {
+            background-color: #f8f9fa;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+    </style>
+}

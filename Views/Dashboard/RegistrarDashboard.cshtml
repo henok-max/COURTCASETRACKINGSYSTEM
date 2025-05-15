@@ -1,0 +1,108 @@
+@model CourtCaseTrackingSystem.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Registrar Dashboard";
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+
+            <div class="container">
+
+                <div class="collapse navbar-collapse justify-content-end">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav-link-custom me-3" asp-controller="Home" asp-action="Index">
+                            <i class="fas fa-sign-in-alt me-1"></i> Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid">
+    <!-- Dashboard Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 text-gray-800">
+            <i class="fas fa-user-shield me-2"></i>@ViewData["Title"]
+        </h1>
+    </div>
+
+    <!-- Statistics Cards Row -->
+    <div class="row mb-3"> <!-- Reduced margin -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Today's Cases
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TodaysCaseCount</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar-day fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Pending Cases
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.PendingCaseCount</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hourglass-half fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons Row -->
+    <div class="row mb-4">
+        <!-- Register Button (Left-aligned with offset) -->
+        <div class="col-md-6 offset-md-0 mb-3"> <!-- Removed offset for left alignment -->
+            <a asp-controller="Case" asp-action="Register" class="btn btn-success btn-lg w-100 py-3">
+                <i class="fas fa-plus-circle me-2"></i>Register New Case
+            </a>
+        </div>
+
+        <!-- Search/View Buttons (Right-aligned closer to top) -->
+        <div class="col-md-5 ms-auto"> <!-- Right-aligned column -->
+            <div class="d-grid gap-2">
+                <a asp-controller="Case" asp-action="ViewCases" class="btn btn-primary btn-lg py-2">
+                    <i class="fas fa-search me-2"></i>Search Cases
+                </a>
+                <a asp-controller="Case" asp-action="ViewCases" class="btn btn-secondary btn-lg py-2">
+                    <i class="fas fa-list-ul me-2"></i>View All Cases
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .btn-success {
+            min-width: 280px;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            min-width: 220px;
+        }
+
+        .row.mb-4 {
+            margin-top: -10px;
+            /* Pull buttons closer to stats cards */
+        }
+    </style>
+}
