@@ -12,7 +12,7 @@ public class FileStorageService
     private readonly IWebHostEnvironment _env;
     private const string UploadsFolder = "CaseDocuments";
     private const string SummonsFolder = "Summons"; // New folder for summon letters
-    private const long MaxFileSize = 10 * 1024 * 1024;
+private const long MaxFileSize = 50 * 1024 * 1024;
     private static readonly string[] AllowedExtensions = [".pdf", ".doc", ".docx"];
 
     public FileStorageService(IWebHostEnvironment env)
@@ -75,6 +75,6 @@ public class FileStorageService
             throw new InvalidOperationException("Unsupported file type");
 
         if (file.Length > MaxFileSize)
-            throw new InvalidOperationException("File size exceeds 10MB limit");
+            throw new InvalidOperationException("File size exceeds 50MB limit");
     }
 }

@@ -55,10 +55,16 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("WitnessUpload", policy => 
         policy.RequireRole("Judge", "Clerk"));
 });
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = 50 * 1024 * 1024; // 50MB
+});
+
 
 // 5. MVC Services
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
 
 // 6. Application Services
 builder.Services.AddScoped<JudgeAssignmentService>();

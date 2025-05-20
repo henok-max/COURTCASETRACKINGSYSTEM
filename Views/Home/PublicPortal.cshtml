@@ -1,0 +1,113 @@
+@model PublicCaseViewModel
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+
+            <div class="container">
+
+                <div class="collapse navbar-collapse justify-content-end">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav-link-custom me-3" asp-controller="Home" asp-action="Index">
+                            <i class="fas fa-sign-in-alt me-1"></i> Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white py-4">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-search fa-2x me-3"></i>
+                <div>
+                    <h1 class="h3 mb-0">Case Tracking Portal</h1>
+                    <p class="mb-0 opacity-75">Track your case status in real-time</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body p-5">
+            <form asp-action="TrackCase" method="post" class="needs-validation" novalidate>
+                <div class="input-group input-group-lg shadow-sm">
+                    <input type="text" 
+                           class="form-control form-control-lg border-primary" 
+                           name="caseNumber" 
+                           placeholder="Enter Case Number" 
+                           required
+                           pattern="CASE-\d{8}-\d{4}"
+                           style="border-right: 0;">
+                    <button class="btn btn-primary px-4" type="submit">
+                        <i class="fas fa-search me-2"></i>Search
+                    </button>
+                </div>
+                <small class="text-muted mt-2 d-block">
+                    <i class="fas fa-info-circle me-1"></i>
+                    Example format: <span class="badge bg-primary">CASE-20231025-0001</span>
+                </small>
+            </form>
+
+            @if (Model?.CaseNumber != null)
+            {
+                <div class="mt-5 animate__animated animate__fadeIn">
+                    <div class="alert alert-success mb-4 shadow-sm">
+                        <i class="fas fa-file-contract me-2"></i>
+                        Case found: <strong>@Model.CaseNumber</strong>
+                    </div>
+                    <partial name="_PublicCaseResult" model="Model" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .card {
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .input-group {
+            transition: all 0.3s ease;
+        }
+
+            .input-group:focus-within {
+                transform: translateY(-2px);
+            }
+
+        .form-control-lg {
+            border-radius: 0.5rem 0 0 0.5rem;
+        }
+
+        .btn-primary {
+            border-radius: 0 0.5rem 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+            .btn-primary:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+            }
+
+        .case-timeline {
+            border-left: 3px solid #0d6efd;
+            margin-left: 1.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+            .case-timeline::before {
+                content: "";
+                position: absolute;
+                left: -13px;
+                top: 0;
+                width: 24px;
+                height: 24px;
+                background: #fff;
+                border: 4px solid #0d6efd;
+                border-radius: 50%;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+    </style>
+}

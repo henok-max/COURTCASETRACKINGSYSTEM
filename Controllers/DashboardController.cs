@@ -84,7 +84,7 @@ namespace CourtCaseTrackingSystem.Controllers
             }
         }
         [HttpPost]
-        [Authorize(Roles = JudgeRole)]
+        [Authorize(Roles = JudgeRole + "," + RegistrarRole)]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateStatus(int id, string newStatus)
         {
@@ -132,6 +132,7 @@ namespace CourtCaseTrackingSystem.Controllers
                 var query = _context.Cases
                     .Include(c => c.AssignedJudge)
                     .Where(c => c.AssignedJudgeId == currentUserId);
+                     query = query.Where(c => c.Status != "Pending");
 
                 if (!string.IsNullOrEmpty(searchString))
                 {

@@ -217,7 +217,7 @@ public class CaseController : Controller
                 Text = ct.ToString()
             }).ToList();
     }
-    [Authorize(Roles = JudgeRole)]
+        [Authorize(Roles = JudgeRole + "," + RegistrarRole)]
     public async Task<IActionResult> ViewCases(
       string searchString,
       string searchType = "CaseNumber",
@@ -229,6 +229,7 @@ public class CaseController : Controller
             var query = _context.Cases
                 .Include(c => c.AssignedJudge)
                 .AsQueryable();
+               query = query.Where(c => c.Status != "Pending");
 
             // Search Logic
             if (!string.IsNullOrEmpty(searchString))
@@ -431,7 +432,7 @@ public class CaseController : Controller
         // Validate file
         if (file.Length == 0 || file.Length > 10 * 1024 * 1024)
         {
-            ModelState.AddModelError("", "File must be between 1 byte and 10MB");
+            ModelState.AddModelError("", "File must be between 1 byte and 50MB");
             return RedirectToAction("Details", new { id = caseId });
         }
 
@@ -465,7 +466,7 @@ public class CaseController : Controller
         // Validate file
         if (file.Length == 0 || file.Length > 10 * 1024 * 1024)
         {
-            ModelState.AddModelError("", "File must be between 1 byte and 10MB");
+            ModelState.AddModelError("", "File must be between 1 byte and 50MB");
             return RedirectToAction("Details", new { id = caseId });
         }
 
@@ -487,7 +488,7 @@ public class CaseController : Controller
     }
 }
 [HttpPost]
-[Authorize(Roles = "Judge")]
+[Authorize(Roles = JudgeRole)]
 public async Task<IActionResult> SetHearingDate(int id, DateTime hearingDate)
 {
     var caseToUpdate = await _context.Cases.FindAsync(id);
@@ -505,7 +506,7 @@ public async Task<IActionResult> SetHearingDate(int id, DateTime hearingDate)
     return RedirectToAction(nameof(Details), new { id });
    }
 [HttpPost]
-[Authorize(Roles = "Judge,Admin")]
+[Authorize(Roles = "Judge")]
 [ValidateAntiForgeryToken]
 public async Task<IActionResult> UpdateCaseDetails(Case model)
 {
@@ -566,6 +567,36 @@ public async Task<IActionResult> UpdateCaseDetails(Case model)
         return RedirectToAction("Details", new { id = model.CaseID });
     }
 }
+[HttpPost]
+[Authorize(Roles = DashboardController.RegistrarRole)]
+public async Task<IActionResult> ReopenCase(int id)
+{
+    try
+    {
+        var caseItem = await _context.Cases.FindAsync(id);
+        
+        if (caseItem == null)
+        {
+            return NotFound();
+        }
 
+        // Corrected condition
+        if (caseItem.Status != "Closed" && caseItem.Status != "Declined")
+        {
+            return BadRequest("Only closed or declined cases can be requested for review");
+        }
 
+        caseItem.Status = "Pending";
+        caseItem.LastModified = DateTime.UtcNow;
+        
+        await _context.SaveChangesAsync();
+        
+        return Ok();
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Error requesting case review for case {CaseId}", id);
+        return StatusCode(500);
+    }
+}
 }

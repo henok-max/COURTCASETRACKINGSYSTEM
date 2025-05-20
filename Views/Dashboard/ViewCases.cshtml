@@ -84,14 +84,18 @@
 </div>
 
 @functions {
-    string GetStatusBadgeClass(string status)
+     string GetStatusBadgeClass(string status)
     {
-        return status switch
+        return status?.ToLower() switch
         {
-            "opened" => "bg-success",
-            "closed" => "bg-secondary",
             "pending" => "bg-warning",
-            _ => "bg-primary"
+
+            "accepted" => "bg-success",
+
+            "opened" => "bg-success",
+
+            "closed" => "bg-secondary",
+            _ => "bg-light text-dark"
         };
     }
 }

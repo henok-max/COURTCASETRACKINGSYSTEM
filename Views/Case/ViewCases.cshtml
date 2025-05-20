@@ -1,5 +1,10 @@
 @using CourtCaseTrackingSystem.Models;
+@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery Antiforgery
 
+<input type="hidden" id="__RequestVerificationToken" 
+       name="__RequestVerificationToken" 
+       value="@Antiforgery.GetAndStoreTokens(Context).RequestToken">
 
 @model CourtCaseTrackingSystem.ViewModels.CaseSearchViewModel;
 @{
@@ -8,7 +13,7 @@
 <div class="container">
     <div class="card shadow">
         <div class="card-header bg-primary text-white">
-            <h3><i class="fas fa-search me-2"></i>Case Management</h3>
+            <h3><i class="fas fa-search me-2"></i>Cases</h3>
         </div>
 
         <div class="card-body">
@@ -66,13 +71,14 @@
                                             class="btn btn-sm btn-outline-primary">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        @if (caseItem.Status == "Closed")
-                                        {
-                                            <button class="btn btn-sm btn-outline-warning" disabled
-                                                title="Re-registration coming soon">
-                                                <i class="fas fa-redo"></i>
-                                            </button>
-                                        }
+                                        @if (caseItem.Status == "Closed" || caseItem.Status == "Declined")
+                                            {
+                                                  <button class="btn btn-sm btn-outline-warning" 
+                                                            onclick="reopenCase(@caseItem.CaseID)"
+                                                              title="Request Case Review">
+                                                              <i class="fas fa-redo"></i>
+                                                             </button>
+                                            }
                                     </td>
                                 </tr>
                             }
@@ -106,14 +112,47 @@
 </div>
 
 @functions {
-    string GetStatusBadgeClass(string status)
+     string GetStatusBadgeClass(string status)
     {
-        return status switch
+        return status?.ToLower() switch
         {
-            "Pending" => "bg-warning",
-            "Closed" => "bg-secondary",
-            "InProgress" => "bg-primary",
+            "pending" => "bg-warning",
+
+            "accepted" => "bg-primary",
+
+            "opened" => "bg-success",
+
+            "closed" => "bg-secondary",
+             "declined" => "bg-danger",
             _ => "bg-light text-dark"
         };
     }
+}
+@section Scripts {
+    <script>
+        async function reopenCase(caseId) {
+            if (confirm('Are you sure you want to request a case review?')) {
+                try {
+                    const response = await fetch(`/Case/ReopenCase/${caseId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                        }
+                    });
+
+                    if (response.ok) {
+                        alert('Case review requested successfully!');
+                        location.reload();
+                    } else {
+                        const error = await response.text();
+                        alert(`Error: ${error}`);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred while processing your request');
+                }
+            }
+        }
+    </script>
 }
