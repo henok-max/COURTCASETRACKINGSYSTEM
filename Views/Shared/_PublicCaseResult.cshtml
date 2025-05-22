@@ -1,4 +1,19 @@
 @model PublicCaseViewModel
+@functions {
+    public string TranslateStatus(string status)
+    {
+        return status switch
+        {
+            "Pending" => "በመጠባበቅ ላይ",
+            "Accepted" => "ተቀባይነት አግኝቷል",
+            "Declined" => "ዉድቅ ተደርጓል",
+            "Opened" => "ተከፍቷል",
+            "Closed" => "ዝግ ተደርጓል",
+            _ => "ያልታወቀ"
+        };
+    }
+}
+
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
@@ -32,7 +47,7 @@
             <!-- Status Ribbon -->
            
             <div class="status-ribbon ribbon-@Model.Status.ToLower()">
-               <i class="fas fa-certificate me-2"></i>@Model.Status
+               <i class="fas fa-certificate me-2"></i>@TranslateStatus(Model.Status)
             </div>
 
             <!-- Timeline Section -->
@@ -42,7 +57,7 @@
                     <div class="timeline-content">
                         <h5 class="timeline-title">
                             <i class="fas fa-user-tie me-2"></i>
-                            Plaintiff
+                            ከሳሽ/Plaintiff
                         </h5>
                         <p class="timeline-text">@Model.PlaintiffName</p>
                     </div>
@@ -53,7 +68,7 @@
                     <div class="timeline-content">
                         <h5 class="timeline-title">
                             <i class="fas fa-user-shield me-2"></i>
-                            Defendant
+                           ተከሳሽ/Defendant
                         </h5>
                         <p class="timeline-text">@Model.DefendantName</p>
                     </div>
@@ -64,7 +79,7 @@
                     <div class="timeline-content">
                         <h5 class="timeline-title">
                             <i class="fas fa-calendar-plus me-2"></i>
-                            Registration Date
+                           የተመዘገበበት ቀን/Registration Date
                         </h5>
                         <p class="timeline-text">@Model.RegistrationDate.ToString("dd MMMM yyyy")</p>
                     </div>
@@ -77,7 +92,7 @@
                         <div class="timeline-content">
                             <h5 class="timeline-title text-warning">
                                 <i class="fas fa-gavel me-2"></i>
-                                Next Hearing
+                             ችሎት መስሚያ ቀን/Hearing Date
                             </h5>
                             <p class="timeline-text">
                                 <span class="badge bg-warning text-dark">
@@ -95,7 +110,7 @@
                         <div class="timeline-content">
                             <h5 class="timeline-title">
                                 <i class="fas fa-handshake me-2"></i>
-                                Appointment Date
+                                የቀጠሮ ቀን/Appointment Date
                             </h5>
                             <p class="timeline-text">@Model.AppointmentDate.Value.ToString("dd MMM yyyy")</p>
                         </div>
@@ -109,7 +124,7 @@
                         <div class="timeline-content">
                             <div class="alert alert-info timeline-alert">
                                 <i class="fas fa-info-circle me-2"></i>
-                                No upcoming hearings scheduled
+                               ችሎት መስሚያ ቀን የልዎትም። /No upcoming hearings scheduled
                             </div>
                         </div>
                     </div>
@@ -121,7 +136,7 @@
                         <div class="timeline-content">
                             <div class="alert alert-info timeline-alert">
                                 <i class="fas fa-info-circle me-2"></i>
-                                No AppointmentDate scheduled
+                                የቀጠሮ ቀን የልዎትም። /No AppointmentDate scheduled
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CmiDPpAcRHq9zdKqAgcBaniY81K27jts9uRrHSKmKck=",
+  "Hash": "83fu8DuNPUrd9fPQo9B0/2hIYT+ULQ48sVHeVLm1n6s=",
   "Source": "CourtCaseTrackingSystem",
   "BasePath": "_content/CourtCaseTrackingSystem",
   "Mode": "Default",
@@ -1307,6 +1307,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\CaseDocuments\\625fd176-f232-4cf8-a2b2-11575cc4b9c0.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\827d2537-e3ac-48da-8516-1cd06cfa2bc2.pdf",
+      "SourceId": "CourtCaseTrackingSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\",
+      "BasePath": "_content/CourtCaseTrackingSystem",
+      "RelativePath": "CaseDocuments/827d2537-e3ac-48da-8516-1cd06cfa2bc2.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\CaseDocuments\\827d2537-e3ac-48da-8516-1cd06cfa2bc2.pdf"
     },
     {
       "Identity": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\CaseDocuments\\90c8156d-5702-4f8a-9f4e-31d14427464e.pdf",

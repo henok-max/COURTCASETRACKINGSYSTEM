@@ -45,7 +45,7 @@
                     <tbody>
                         @foreach (var caseItem in Model.Cases)
                         {
- <tr class="clickable-row"
+                           <tr class="clickable-row"
                             onclick="window.location='@Url.Action("Details", "Case", new { id = caseItem.CaseID })'">
                                 <td>@caseItem.CaseNumber</td>
                                 <td>@caseItem.Title</td>
@@ -90,7 +90,7 @@
         {
             "pending" => "bg-warning",
 
-            "accepted" => "bg-success",
+            "accepted" => "bg-primary",
 
             "opened" => "bg-success",
 

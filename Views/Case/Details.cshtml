@@ -153,25 +153,28 @@
             </div>
         }
 
-        @if (User.IsInRole("Judge") && Model.AssignedJudgeId == currentUserId)
-        {
-            <div class="col-md-6">
+          @if (User.IsInRole("Judge") 
+             && Model.AssignedJudgeId == currentUserId 
+             && (Model.Status == "Accepted" || Model.Status == "Closed"))
+          {
+                <div class="col-md-6">
                 <h5><i class="fas fa-calendar-alt me-2"></i>Set Hearing Date & Open Case</h5>
                 <form asp-action="SetHearingDate" method="post">
-                    <input type="hidden" name="id" value="@Model.CaseID" />
-                    <div class="form-group">
-                        <label for="hearingDate">Hearing Date</label>
-                        <input type="date" name="hearingDate" class="form-control" required />
-                    </div>
-                    <button type="submit" class="btn btn-success mt-2">
-                        <i class="fas fa-door-open me-2"></i>Open Case
-                    </button>
+                 <input type="hidden" name="id" value="@Model.CaseID" />
+                 <div class="form-group">
+                <label for="hearingDate">Hearing Date</label>
+                <input type="date" name="hearingDate" class="form-control" required />
+                 </div>
+                 <button type="submit" class="btn btn-success mt-2">
+                 <i class="fas fa-door-open me-2"></i>Open Case
+                </button>
                 </form>
-            </div>
-        }
-    </div>
-}
- <div class="mt-4" style="margin-left: 80%;">
+                 </div>
+                }
+
+              </div>
+            }
+            <div class="mt-4" style="margin-left: 80%;">
                 <a asp-controller="Dashboard" asp-action="JudgeDashboard" class="btn btn-outline-primary">
                  <i class="fas fa-arrow-left me-2"></i>Back to List
                  </a>
@@ -185,6 +188,10 @@
     </button>
 
     <!-- Modal -->
+    
+    @if (User.IsInRole("Judge"))
+{
+
     <div class="modal fade" id="updateCaseModal" tabindex="-1">
         <div class="modal-dialog modal-xl"> <!-- Changed to modal-xl for wider layout -->
             <div class="modal-content">
@@ -314,8 +321,12 @@
                 </form>
             </div>
         </div>
+        
     </div>
+}
 </div>
+
+
 @functions {
     string GetStatusAlertClass(string status)
     {

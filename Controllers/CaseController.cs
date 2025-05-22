@@ -273,7 +273,7 @@ public class CaseController : Controller
             return View("Error");
         }
     } 
-        [Authorize(Roles = JudgeRole + "," + RegistrarRole)]
+        [Authorize(Roles = JudgeRole + "," + ClerkRole)]
     public async Task<IActionResult> Details(int id)
     {
         var caseItem = await _context.Cases
@@ -286,7 +286,7 @@ public class CaseController : Controller
         }
 
         // Allow Admins/Registrars/Clerks to bypass judge check
-        if (User.IsInRole(RegistrarRole) && !User.IsInRole(AdminRole))
+    if (!User.IsInRole(ClerkRole) && !User.IsInRole(AdminRole))
         {
             var currentUserId = _userManager.GetUserId(User);
             if (caseItem.AssignedJudgeId != currentUserId)

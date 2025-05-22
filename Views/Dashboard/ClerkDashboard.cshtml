@@ -1,0 +1,143 @@
+@using CourtCaseTrackingSystem.ViewModels
+@using CourtCaseTrackingSystem.Models
+@model ClerkDashboardViewModel
+
+@{
+    ViewData["Title"] = "Clerk Dashboard";
+}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+
+            <div class="container">
+
+                <div class="collapse navbar-collapse justify-content-end">
+                    <div class="navbar-nav">
+                        <a class="nav-link nav-link-custom me-3" asp-controller="Home" asp-action="Index">
+                            <i class="fas fa-sign-in-alt me-1"></i> Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <h2>Clerk Dashboard</h2>
+    <div style="margin-left:80%;">
+<a asp-action="ViewCases" class="btn btn-outline-primary">
+            <i class="fas fa-hourglass-half me-2"></i>View All Cases
+        </a>
+        </div>
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Total Cases</h5>
+                    <p class="card-text display-4">@Model.TotalCases</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">Today's New Cases</h5>
+                    <p class="card-text display-4">@Model.TodayRegisteredCases</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4>Recent Cases</h4>
+    <table class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Case Number</th>
+                <th>Title</th>
+                <th>Registration Date</th>
+                <th>Status</th>
+                <th>Assigned Judge</th>
+            </tr>
+        </thead>
+        <tbody>
+        @if (Model?.RecentCases?.Any() == true)
+                {
+    @foreach (var caseItem in Model.RecentCases)
+    {
+        <tr class="clickable-row"
+                            onclick="window.location='@Url.Action("Details", "Case", new { id = caseItem.CaseID })'"  >
+            <td>@caseItem.CaseNumber</td>
+            <td>@caseItem.Title</td>
+            <td>@caseItem.RegistrationDate.ToString("d")</td>
+            <td>
+                 <span class="badge @GetStatusBadgeClass(caseItem.Status)">
+                      @caseItem.Status
+                 </span>  
+            </td>         
+             <td>@(caseItem.AssignedJudge?.FirstName ?? "Not Assigned")</td>
+        </tr>
+    }
+    }
+    else
+     {
+        <tr>
+                        <td colspan="7" class="text-center py-4">
+                            <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                            <p class="text-muted">No recent cases found</p>
+                        </td>
+                    </tr>
+     }
+</tbody>
+    </table>
+</div>
+</div>
+</div>
+
+
+@functions {
+    string GetStatusBadgeClass(string status)
+    {
+        return status?.ToLower() switch
+        {
+            "pending" => "bg-warning",
+
+            "accepted" => "bg-primary",
+
+            "opened" => "bg-success",
+
+            "closed" => "bg-secondary",
+            _ => "bg-light text-dark"
+        };
+    }
+}
+
+@section Styles {
+    <style>
+        .clickable-row {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .clickable-row:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+            transform: translateX(4px);
+        }
+
+        .badge {
+            font-size: 0.85em;
+            padding: 0.5em 0.75em;
+            min-width: 80px;
+        }
+
+        .table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        .fa-user-shield {
+            color: #6c757d;
+        }
+    </style>
+}

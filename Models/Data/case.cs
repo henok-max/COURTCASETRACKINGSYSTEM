@@ -46,10 +46,17 @@ namespace CourtCaseTrackingSystem.Models
         public DateTime? LastModified { get; set; }
 
         public DateTime RegistrationDate { get; set; } = DateTime.UtcNow;  // Changed to UTC
+        [Phone]
+        [Display(Name = "Plaintiff Phone")]
+        public string? PlaintiffPhone { get; set; }
+
+        [Phone]
+        [Display(Name = "Defendant Phone")]
+        public string? DefendantPhone { get; set; }
+
+
 
         // Enum list storage
-
-    // Add these new properties
           public string? DefenseDocumentPath { get; set; }
           public DateTime? DefenseDocumentDate { get; set; }
 

@@ -18,6 +18,7 @@ namespace CourtCaseTrackingSystem.Controllers
         private const string AdminRole = "Admin";
         private const string JudgeRole = "Judge";
         private const string RegistrarRole = "Registrar";
+        private const string ClerkRole = "Clerk";
 
         public AccountController(
             SignInManager<ApplicationUser> signInManager,
@@ -103,6 +104,8 @@ namespace CourtCaseTrackingSystem.Controllers
                 return ("JudgeDashboard", "Dashboard");
             if (roles.Contains(RegistrarRole, StringComparer.OrdinalIgnoreCase))
                 return ("RegistrarDashboard", "Dashboard");
+                if (roles.Contains(ClerkRole, StringComparer.OrdinalIgnoreCase))
+                return ("ClerkDashboard", "Dashboard");
             return ("UserDashboard", "Dashboard");
         }
 

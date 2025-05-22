@@ -69,7 +69,7 @@ namespace CourtCaseTrackingSystem.Controllers
                     PendingCases = await _context.Cases.CountAsync(c => c.AssignedJudgeId == judgeId && c.Status == "Pending"),
                     RecentCases = await _context.Cases
                         .Include(c => c.AssignedJudge)
-            .Where(c => c.AssignedJudgeId == judgeId && (c.Status == "Opened" || c.Status == "Accepted"))
+                        .Where(c => c.AssignedJudgeId == judgeId && c.Status != "Pending" && c.Status != "Declined")
                         .OrderByDescending(c => c.RegistrationDate)
                         .Take(5)
                         .ToListAsync()
@@ -82,12 +82,12 @@ namespace CourtCaseTrackingSystem.Controllers
                 _logger.LogError(ex, "Error loading judge dashboard");
                 return View("Error");
             }
-        }
-        [HttpPost]
-        [Authorize(Roles = JudgeRole + "," + RegistrarRole)]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateStatus(int id, string newStatus)
-        {
+         }
+          [HttpPost]
+          [Authorize(Roles = JudgeRole + "," + RegistrarRole)]
+           [ValidateAntiForgeryToken]
+          public async Task<IActionResult> UpdateStatus(int id, string newStatus)
+            {
             var caseToUpdate = await _context.Cases
                 .Include(c => c.AssignedJudge)
                 .FirstOrDefaultAsync(c => c.CaseID == id);
@@ -119,57 +119,72 @@ namespace CourtCaseTrackingSystem.Controllers
 
             return RedirectToAction("Details", new { id });
         }
-        [Authorize(Roles = JudgeRole)]
-        public async Task<IActionResult> ViewCases(
-            string searchString,
-            string searchType = "CaseNumber",
-            int page = 1,
-            int pageSize = 10)
+       [Authorize(Roles = JudgeRole + "," + ClerkRole)]
+public async Task<IActionResult> ViewCases(
+    string searchString,
+    string searchType = "CaseNumber",
+    int page = 1,
+    int pageSize = 10)
+{
+    try
+    {
+        var currentUserId = _userManager.GetUserId(User);
+
+        IQueryable<Case> query;
+
+        if (User.IsInRole(ClerkRole))
         {
-            try
-            {
-                var currentUserId = _userManager.GetUserId(User);
-                var query = _context.Cases
-                    .Include(c => c.AssignedJudge)
-                    .Where(c => c.AssignedJudgeId == currentUserId);
-                     query = query.Where(c => c.Status != "Pending");
-
-                if (!string.IsNullOrEmpty(searchString))
-                {
-                    searchString = searchString.Trim().ToLower();
-                    query = searchType switch
-                    {
-                        "CaseNumber" => query.Where(c => c.CaseNumber.ToLower().Contains(searchString)),
-                        "Title" => query.Where(c => c.Title.ToLower().Contains(searchString)),
-                        "Plaintiff" => query.Where(c => c.PlaintiffName.ToLower().Contains(searchString)),
-                        "Defendant" => query.Where(c => c.DefendantName.ToLower().Contains(searchString)),
-                        _ => query
-                    };
-                }
-
-                var totalItems = await query.CountAsync();
-                var cases = await query
-                    .OrderByDescending(c => c.RegistrationDate)
-                    .Skip((page - 1) * pageSize)
-                    .Take(pageSize)
-                    .ToListAsync();
-
-                return View("ViewCases", new CaseSearchViewModel
-                {
-                    Cases = cases,
-                    SearchString = searchString,
-                    SearchType = searchType,
-                    PageNumber = page,
-                    PageSize = pageSize,
-                    TotalItems = totalItems
-                });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error viewing cases");
-                return View("Error");
-            }
+            // Clerk: See all cases except pending
+            query = _context.Cases
+                .Include(c => c.AssignedJudge)
+                .Where(c => c.Status != "Pending");
         }
+        else
+        {
+            // Judge: See only assigned cases except pending
+            query = _context.Cases
+                .Include(c => c.AssignedJudge)
+                .Where(c => c.AssignedJudgeId == currentUserId && c.Status != "Pending");
+        }
+
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            searchString = searchString.Trim().ToLower();
+
+            query = searchType switch
+            {
+                "CaseNumber" => query.Where(c => c.CaseNumber.ToLower().Contains(searchString)),
+                "Title" => query.Where(c => c.Title.ToLower().Contains(searchString)),
+                "Plaintiff" => query.Where(c => c.PlaintiffName.ToLower().Contains(searchString)),
+                "Defendant" => query.Where(c => c.DefendantName.ToLower().Contains(searchString)),
+                _ => query
+            };
+        }
+
+        var totalItems = await query.CountAsync();
+
+        var cases = await query
+            .OrderByDescending(c => c.RegistrationDate)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        return View("ViewCases", new CaseSearchViewModel
+        {
+            Cases = cases,
+            SearchString = searchString,
+            SearchType = searchType,
+            PageNumber = page,
+            PageSize = pageSize,
+            TotalItems = totalItems
+        });
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Error viewing cases");
+        return View("Error");
+    }
+}
 
         [Authorize(Roles = JudgeRole)]
         public async Task<IActionResult> ViewPendingCases(
@@ -248,10 +263,33 @@ namespace CourtCaseTrackingSystem.Controllers
             }
         }
 
-        [Authorize(Roles = $"{ClerkRole},{PublicRole}")]
-        public IActionResult UserDashboard()
-        {
-            return View();
-        }
+        [Authorize(Roles = ClerkRole)]
+public async Task<IActionResult> ClerkDashboard()
+{
+    try
+    {
+       var model = new ClerkDashboardViewModel
+      {
+       TotalCases = await _context.Cases.CountAsync(),
+       PendingCases = await _context.Cases.CountAsync(c => c.Status == "Pending"),
+       TodayRegisteredCases = await _context.Cases
+        .CountAsync(c => c.RegistrationDate.Date == DateTime.UtcNow.Date),
+       RecentCases = await _context.Cases
+        .Include(c => c.AssignedJudge)
+        .Where(c => c.Status != "Pending" && c.Status != "Declined")
+        .OrderByDescending(c => c.RegistrationDate)
+        .Take(5)
+        .ToListAsync()
+      };
+
+
+        return View(model);
     }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Error loading clerk dashboard");
+        return View("Error");
+    }
+}
+}
 }
