@@ -4,6 +4,7 @@ using CourtCaseTrackingSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CourtCaseTrackingSystem.Migrations
 {
     [DbContext(typeof(CourtDbContext))]
-    partial class CourtDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250523055417_FixPhoneNumbers")]
+    partial class FixPhoneNumbers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -174,12 +177,6 @@ namespace CourtCaseTrackingSystem.Migrations
 
                     b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("NewDocumentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NewDocumentPath")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PlaintiffName")
                         .IsRequired()

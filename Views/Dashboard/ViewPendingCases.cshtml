@@ -48,6 +48,7 @@
                             <th>Defendant</th>
                             <th>Registration Date</th>
                             <th>Document</th>
+                            <th>NewDocument</th>
                             <th>Decision</th>
                         </tr>
                     </thead>
@@ -73,7 +74,7 @@
                                             <a href="#" class="document-preview"
                                                 data-url="@Url.Action("DownloadDocument", "Case", new { filePath = caseItem.DocumentPath, download = false })"
                                                 data-case-id="@caseItem.CaseID">
-                                                <i class="fas fa-file-pdf text-danger"></i> View Document
+                                                <i class="fas fa-file-pdf text-danger"></i> View
                                             </a>
                                         }
                                         else
@@ -81,6 +82,22 @@
                                             <span class="text-muted">N/A</span>
                                         }
                                     </td>
+
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(caseItem.NewDocumentPath))
+                                        {
+                                            <a href="#" class="document-preview"
+                                                data-url="@Url.Action("DownloadDocument", "Case", new { filePath = caseItem.NewDocumentPath, download = false })"
+                                                data-case-id="@caseItem.CaseID">
+                                                <i class="fas fa-file-pdf text-danger"></i> View
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">N/A</span>
+                                        }
+                                    </td>
+
                                     <td>
                                         <button class="btn btn-sm btn-outline-warning decision-btn"
                                             data-case-id="@caseItem.CaseID">
@@ -220,7 +237,7 @@
                 const formData = {
                     CaseId: document.getElementById('caseId').value,
                     Decision: document.getElementById('decision').value,
-SummonDate: document.querySelector('[name="SummonDate"]')?.value || null,
+                    SummonDate: document.querySelector('[name="SummonDate"]')?.value || null,
                     Comments: document.querySelector('[name="Comments"]').value
                 };
 

@@ -54,6 +54,8 @@ namespace CourtCaseTrackingSystem.Models
         [Display(Name = "Defendant Phone")]
         public string? DefendantPhone { get; set; }
 
+         public bool PlaintiffSmsOptIn { get; set; } = true;
+          public bool DefendantSmsOptIn { get; set; } = true;
 
 
         // Enum list storage
@@ -62,6 +64,10 @@ namespace CourtCaseTrackingSystem.Models
 
           public string? WitnessDocumentPath { get; set; }
           public DateTime? WitnessDocumentDate { get; set; }
+
+          public string? NewDocumentPath { get; set; }
+          public DateTime? NewDocumentDate { get; set; }
+
           public DateTime? HearingDate { get; set; } // Nullable, set only once by judge
           public DateTime? AppointmentDate { get; set; } // Can be updated many times
            public string? Plea { get; set; }

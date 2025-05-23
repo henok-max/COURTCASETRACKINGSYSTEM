@@ -36,6 +36,8 @@ private const long MaxFileSize = 50 * 1024 * 1024;
     {
         DocumentType.Defense => "DefenseDocuments",
         DocumentType.Witness => "WitnessDocuments",
+       DocumentType.New => "NewDocuments",
+
         _ => "CaseDocuments" // Default for DocumentType.Case
     };
 

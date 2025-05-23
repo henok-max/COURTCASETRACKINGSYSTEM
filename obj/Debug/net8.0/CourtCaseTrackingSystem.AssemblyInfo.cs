@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CourtCaseTrackingSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf9e07d94f441e9cbe747b8903aeebe552f46294")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f9714f87ed3ba4932bec679f2f4762b2f466787")]
 [assembly: System.Reflection.AssemblyProductAttribute("CourtCaseTrackingSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CourtCaseTrackingSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

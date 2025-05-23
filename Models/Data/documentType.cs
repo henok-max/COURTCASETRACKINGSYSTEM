@@ -4,6 +4,7 @@ public enum DocumentType
 {
     Case,
     Defense,
-    Witness
+    Witness,
+    New
 }
 }

@@ -30,5 +30,17 @@ namespace CourtCaseTrackingSystem.ViewModels
         public IFormFile? Document { get; set; }
         public string? Description { get; set; } // Optional
         public IEnumerable<SelectListItem> CaseTypeOptions { get; set; } = new List<SelectListItem>();
+
+        [Display(Name = "NewDocument")]
+        public IFormFile? NewDocument { get; set; }
+
+        [Phone]
+         public string? PlaintiffPhone { get; set; }
+
+        [Phone]
+        public string? DefendantPhone { get; set; }
+
+        [Display(Name = "Send SMS Notifications")]
+        public bool SmsNotificationsEnabled { get; set; } = true;
     }
 }

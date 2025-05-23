@@ -69,7 +69,7 @@ namespace CourtCaseTrackingSystem.Controllers
                     PendingCases = await _context.Cases.CountAsync(c => c.AssignedJudgeId == judgeId && c.Status == "Pending"),
                     RecentCases = await _context.Cases
                         .Include(c => c.AssignedJudge)
-                        .Where(c => c.AssignedJudgeId == judgeId && c.Status != "Pending" && c.Status != "Declined")
+                        .Where(c => c.AssignedJudgeId == judgeId && c.Status != "Pending" && c.Status != "Declined" && c.Status != "Closed")
                         .OrderByDescending(c => c.RegistrationDate)
                         .Take(5)
                         .ToListAsync()
@@ -144,7 +144,7 @@ public async Task<IActionResult> ViewCases(
             // Judge: See only assigned cases except pending
             query = _context.Cases
                 .Include(c => c.AssignedJudge)
-                .Where(c => c.AssignedJudgeId == currentUserId && c.Status != "Pending");
+                .Where(c => c.AssignedJudgeId == currentUserId && c.Status != "Pending" && c.Status != "Closed");
         }
 
         if (!string.IsNullOrEmpty(searchString))
@@ -276,7 +276,7 @@ public async Task<IActionResult> ClerkDashboard()
         .CountAsync(c => c.RegistrationDate.Date == DateTime.UtcNow.Date),
        RecentCases = await _context.Cases
         .Include(c => c.AssignedJudge)
-        .Where(c => c.Status != "Pending" && c.Status != "Declined")
+        .Where(c => c.Status != "Pending" && c.Status != "Declined" )
         .OrderByDescending(c => c.RegistrationDate)
         .Take(5)
         .ToListAsync()

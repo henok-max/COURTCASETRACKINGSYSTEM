@@ -16,6 +16,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using Newtonsoft.Json;
+using System.Text;
 
 public class CaseController : Controller
 {
@@ -31,6 +32,7 @@ public class CaseController : Controller
     private readonly ILogger<CaseController> _logger;
     private readonly IWebHostEnvironment _env;
     private readonly UserManager<ApplicationUser> _userManager; // Add this
+    private readonly ISmsService _smsService;
 
 
     public CaseController(
@@ -40,7 +42,9 @@ public class CaseController : Controller
         JudgeAssignmentService judgeService,
         FileStorageService fileService,
         ILogger<CaseController> logger,
-                IWebHostEnvironment env) // Add this
+            ISmsService smsService,
+
+            IWebHostEnvironment env) // Add this
 
     {
         _context = context;
@@ -50,6 +54,8 @@ public class CaseController : Controller
         _fileService = fileService;
         _logger = logger;
         _env = env;
+            _smsService = smsService;
+
 
     }
     [HttpGet]
@@ -173,12 +179,25 @@ public class CaseController : Controller
                 RegistrationDate = DateTime.UtcNow,
                 DocumentPath = documentPath,
                 AssignedJudgeId = assignmentResult.AssignedJudgeId,
-                AssignedJudge = judge
+                AssignedJudge = judge,
+                PlaintiffPhone = model.PlaintiffPhone,
+                DefendantPhone = model.DefendantPhone,
+                PlaintiffSmsOptIn = model.SmsNotificationsEnabled,
+                DefendantSmsOptIn = model.SmsNotificationsEnabled
             };
 
             await _context.Cases.AddAsync(caseEntry);
             await _context.SaveChangesAsync();
-
+           if (model.SmsNotificationsEnabled)
+              {
+              var message = $"""
+                  Case {caseEntry.CaseNumber} Registered Successfully
+                  Status: {caseEntry.Status}
+                  Next Step: Await until we notify you 
+                  """;
+            
+        await SendCaseNotifications(caseEntry, message);
+    }
             TempData["CaseNumber"] = caseEntry.CaseNumber;
             return RedirectToAction("Confirmation");
         }
@@ -273,9 +292,9 @@ public class CaseController : Controller
             return View("Error");
         }
     } 
-        [Authorize(Roles = JudgeRole + "," + ClerkRole)]
+        [Authorize(Roles = JudgeRole + "," + ClerkRole + "," + RegistrarRole)]
     public async Task<IActionResult> Details(int id)
-    {
+    { 
         var caseItem = await _context.Cases
             .Include(c => c.AssignedJudge)
             .FirstOrDefaultAsync(c => c.CaseID == id);
@@ -286,7 +305,7 @@ public class CaseController : Controller
         }
 
         // Allow Admins/Registrars/Clerks to bypass judge check
-    if (!User.IsInRole(ClerkRole) && !User.IsInRole(AdminRole))
+    if (!User.IsInRole(ClerkRole) && !User.IsInRole(AdminRole) && !User.IsInRole(RegistrarRole) )
         {
             var currentUserId = _userManager.GetUserId(User);
             if (caseItem.AssignedJudgeId != currentUserId)
@@ -297,6 +316,7 @@ public class CaseController : Controller
 
         return View(caseItem);
     }
+
     [HttpPost]
     [Authorize(Roles = JudgeRole)]
     [IgnoreAntiforgeryToken]
@@ -361,7 +381,9 @@ public class CaseController : Controller
             caseItem.LastModified = DateTime.UtcNow;
 
             await _context.SaveChangesAsync();
+          var message = $" your Case {caseItem.CaseNumber} is: {caseItem.Status}";
 
+        await SendCaseNotifications(caseItem, message);
             return Ok();
         }
         catch (Exception ex)
@@ -419,6 +441,8 @@ public class CaseController : Controller
         public DateTime? SummonDate { get; set; }
         public string? Comments { get; set; }
     }
+       
+       
         [HttpPost]
         [Authorize(Roles = JudgeRole + "," + ClerkRole)]
         [ValidateAntiForgeryToken]
@@ -453,6 +477,8 @@ public class CaseController : Controller
         return RedirectToAction("Details", new { id = caseId });
     }
 }
+
+
         [HttpPost]
         [Authorize(Roles = JudgeRole + "," + ClerkRole)]
         [ValidateAntiForgeryToken]
@@ -487,6 +513,44 @@ public class CaseController : Controller
         return RedirectToAction("Details", new { id = caseId });
     }
 }
+
+        [HttpPost]
+        [Authorize(Roles = RegistrarRole)]
+        [ValidateAntiForgeryToken]
+         public async Task<IActionResult> UploadNewDocument(int caseId, IFormFile file)
+          {
+           try
+           {
+        var caseItem = await _context.Cases.FindAsync(caseId);
+        if (caseItem == null) return NotFound();
+
+        // Validate file
+        if (file.Length == 0 || file.Length > 10 * 1024 * 1024)
+        {
+            ModelState.AddModelError("", "File must be between 1 byte and 50MB");
+            return RedirectToAction("Details", new { id = caseId });
+        }
+
+        // Save document
+        var NewDocumentPath = await _fileService.SaveDocument(file, DocumentType.New);
+        
+        // Update case record
+        caseItem.NewDocumentPath = NewDocumentPath;
+        caseItem.NewDocumentDate = DateTime.UtcNow;
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Details", new { id = caseId });
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Error uploading New document");
+        ModelState.AddModelError("", "Error uploading document");
+        return RedirectToAction("Details", new { id = caseId });
+    }
+}
+
+
+
 [HttpPost]
 [Authorize(Roles = JudgeRole)]
 public async Task<IActionResult> SetHearingDate(int id, DateTime hearingDate)
@@ -498,10 +562,18 @@ public async Task<IActionResult> SetHearingDate(int id, DateTime hearingDate)
         return NotFound();
     }
 
-    caseToUpdate.HearingDate = hearingDate;
-    caseToUpdate.Status = "Opened"; // update status
-    _context.Update(caseToUpdate);
-    await _context.SaveChangesAsync();
+      caseToUpdate.HearingDate = hearingDate;
+      caseToUpdate.Status = "Opened"; // update status
+      _context.Update(caseToUpdate);
+       await _context.SaveChangesAsync();
+      var message = $"""
+          Hearing Scheduled
+          Case: {caseToUpdate.CaseNumber}
+          Date: {hearingDate:dd MMM yyyy}
+          Location: DebreMarkos High Court
+          """;
+        
+      await SendCaseNotifications(caseToUpdate, message);
 
     return RedirectToAction(nameof(Details), new { id });
    }
@@ -522,10 +594,32 @@ public async Task<IActionResult> UpdateCaseDetails(Case model)
             return Forbid();
         }
 
-        // Update basic fields
-        caseItem.Status = model.Status;
-        caseItem.AppointmentDate = model.AppointmentDate;
-        caseItem.Plea = model.Plea;
+// Track if any changes were made
+        var hasChanges = false;
+        var message = new StringBuilder($"Case {caseItem.CaseNumber} Updated:");
+
+        // Status update
+        if (caseItem.Status != model.Status)
+        {
+            message.Append($"\nStatus: {model.Status}");
+            caseItem.Status = model.Status;
+            hasChanges = true;
+        }
+
+        // Appointment date update
+        if (caseItem.AppointmentDate != model.AppointmentDate)
+        {
+            message.Append($"\nNew Date: {model.AppointmentDate:dd MMM yyyy}");
+            caseItem.AppointmentDate = model.AppointmentDate;
+            hasChanges = true;
+        }
+
+     if (caseItem.Plea != model.Plea)
+        {
+            caseItem.Plea = model.Plea;
+            hasChanges = true;
+        }
+
 
         // Handle judgment history
         var judgments = string.IsNullOrEmpty(caseItem.JudgmentHistory) 
@@ -558,6 +652,13 @@ public async Task<IActionResult> UpdateCaseDetails(Case model)
         }
 
         await _context.SaveChangesAsync();
+         if (hasChanges)
+        {
+            await SendCaseNotifications(
+                caseItem,
+                message.ToString()
+            );
+        } 
         return RedirectToAction("Details", new { id = model.CaseID });
     }
     catch (Exception ex)
@@ -598,5 +699,44 @@ public async Task<IActionResult> ReopenCase(int id)
         _logger.LogError(ex, "Error requesting case review for case {CaseId}", id);
         return StatusCode(500);
     }
+}
+     
+    private async Task SendCaseNotifications(Case caseItem, string message)
+    {
+    try
+    {
+        var tasks = new List<Task>();
+
+        if (caseItem.PlaintiffSmsOptIn && !string.IsNullOrWhiteSpace(caseItem.PlaintiffPhone))
+        {
+            tasks.Add(_smsService.SendSms(caseItem.PlaintiffPhone, message));
+        }
+
+        if (caseItem.HearingDate.HasValue && 
+            caseItem.DefendantSmsOptIn && 
+            !string.IsNullOrWhiteSpace(caseItem.DefendantPhone))
+        {
+            tasks.Add(_smsService.SendSms(caseItem.DefendantPhone, message));
+        }
+
+        await Task.WhenAll(tasks);
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Failed to send SMS notifications");
+    }
+}
+[Authorize(Roles = "Admin")]
+[HttpGet("sms-logs")]
+public IActionResult GetSmsLogs([FromQuery] string phone = null)
+{
+    var logs = _smsService.GetSentMessages();
+    
+    if (!string.IsNullOrEmpty(phone))
+    {
+        logs = logs.Where(x => x.PhoneNumber.Contains(phone)).ToList();
+    }
+
+    return Ok(logs.OrderByDescending(x => x.Timestamp));
 }
 }

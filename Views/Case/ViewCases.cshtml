@@ -2,9 +2,7 @@
 @using Microsoft.AspNetCore.Antiforgery
 @inject IAntiforgery Antiforgery
 
-<input type="hidden" id="__RequestVerificationToken" 
-       name="__RequestVerificationToken" 
-       value="@Antiforgery.GetAndStoreTokens(Context).RequestToken">
+
 
 @model CourtCaseTrackingSystem.ViewModels.CaseSearchViewModel;
 @{
@@ -67,18 +65,13 @@
                                     </td>
                                     <td>@caseItem.AssignedJudge?.UserName</td>
                                     <td>
+
                                         <a asp-action="Details" asp-route-id="@caseItem.CaseID"
                                             class="btn btn-sm btn-outline-primary">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        @if (caseItem.Status == "Closed" || caseItem.Status == "Declined")
-                                            {
-                                                  <button class="btn btn-sm btn-outline-warning" 
-                                                            onclick="reopenCase(@caseItem.CaseID)"
-                                                              title="Request Case Review">
-                                                              <i class="fas fa-redo"></i>
-                                                             </button>
-                                            }
+
+
                                     </td>
                                 </tr>
                             }
@@ -112,7 +105,7 @@
 </div>
 
 @functions {
-     string GetStatusBadgeClass(string status)
+    string GetStatusBadgeClass(string status)
     {
         return status?.ToLower() switch
         {
@@ -123,36 +116,8 @@
             "opened" => "bg-success",
 
             "closed" => "bg-secondary",
-             "declined" => "bg-danger",
+            "declined" => "bg-danger",
             _ => "bg-light text-dark"
         };
     }
-}
-@section Scripts {
-    <script>
-        async function reopenCase(caseId) {
-            if (confirm('Are you sure you want to request a case review?')) {
-                try {
-                    const response = await fetch(`/Case/ReopenCase/${caseId}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-                        }
-                    });
-
-                    if (response.ok) {
-                        alert('Case review requested successfully!');
-                        location.reload();
-                    } else {
-                        const error = await response.text();
-                        alert(`Error: ${error}`);
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('An error occurred while processing your request');
-                }
-            }
-        }
-    </script>
 }

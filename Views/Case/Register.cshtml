@@ -5,114 +5,129 @@
 
 <div style="max-width: 800px; margin: 10px auto; border: 1px solid #ccc; border-radius: 8px; padding: 16px;">
     <div class="card shadow">
-        <div class=" card shadow">
-            <div class="card-header bg-success text-white">
-                <h4>Case Registration</h4>
-            </div>
-            <div class="card-body">
-                <form asp-action="Register" enctype="multipart/form-data" class="needs-validation" novalidate>
-                    @Html.AntiForgeryToken()
+        <div class="card-header bg-success text-white">
+            <h4>Case Registration</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Register" enctype="multipart/form-data" class="needs-validation" novalidate>
+                @Html.AntiForgeryToken()
 
-                    <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
 
-                    <div class="row g-3">
-                        <!-- Left Column -->
-                        <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <label asp-for="Title" class="form-label"></label>
-                                <input asp-for="Title" class="form-control" />
-                                <span asp-validation-for="Title" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label asp-for="SelectedCaseType" class="form-label"></label>
-                                <select asp-for="SelectedCaseType" asp-items="Model.CaseTypeOptions"
-                                    class="form-select">
-                                    <option value="">Select Case Type</option>
-                                </select>
-                                <span asp-validation-for="SelectedCaseType" class="text-danger"></span>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label asp-for="PlaintiffName" class="form-label"></label>
-                                <input asp-for="PlaintiffName" class="form-control" />
-                                <span asp-validation-for="PlaintiffName" class="text-danger"></span>
-                            </div>
+                <div class="row g-3">
+                    <!-- Left Column -->
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="Title" class="form-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
 
-                        <!-- Right Column -->
-                        <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <label asp-for="DefendantName" class="form-label"></label>
-                                <input asp-for="DefendantName" class="form-control" />
-                                <span asp-validation-for="DefendantName" class="text-danger"></span>
-                            </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="SelectedCaseType" class="form-label"></label>
+                            <select asp-for="SelectedCaseType" asp-items="Model.CaseTypeOptions" class="form-select">
+                                <option value="">Select Case Type</option>
+                            </select>
+                            <span asp-validation-for="SelectedCaseType" class="text-danger"></span>
+                        </div>
 
-                            <div class="form-group mb-3">
-                                <label asp-for="Wereda" class="form-label"></label>
-                                <input asp-for="Wereda" class="form-control" />
-                                <span asp-validation-for="Wereda" class="text-danger"></span>
-                            </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="PlaintiffName" class="form-label"></label>
+                            <input asp-for="PlaintiffName" class="form-control" />
+                            <span asp-validation-for="PlaintiffName" class="text-danger"></span>
+                        </div>
 
-                            <div class="form-group mb-3">
-                                <label asp-for="City" class="form-label"></label>
-                                <input asp-for="City" class="form-control" />
-                                <span asp-validation-for="City" class="text-danger"></span>
-                            </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="PlaintiffPhone" class="form-label"></label>
+                            <input asp-for="PlaintiffPhone" class="form-control" placeholder="+251911223344" />
+                            <span asp-validation-for="PlaintiffPhone" class="text-danger"></span>
                         </div>
                     </div>
 
-                    <!-- Full Width Fields -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group mb-3">
-                                <label asp-for="Description" class="form-label"></label>
-                                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
-                                <span asp-validation-for="Description" class="text-danger"></span>
-                            </div>
+                    <!-- Right Column -->
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label asp-for="DefendantName" class="form-label"></label>
+                            <input asp-for="DefendantName" class="form-control" />
+                            <span asp-validation-for="DefendantName" class="text-danger"></span>
+                        </div>
 
-                            <div class="form-group mb-4">
-                                <label asp-for="Document" class="form-label"></label>
-                                <input type="file" asp-for="Document" class="form-control" />
-                                <small class="form-text text-muted"> Maximum file size: 50MB. Allowed formats:
-                                    PDF, DOC, DOCX</small>
-                                <span asp-validation-for="Document" class="text-danger"></span>
-                            </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="DefendantPhone" class="form-label"></label>
+                            <input asp-for="DefendantPhone" class="form-control" placeholder="+251922334455" />
+                            <span asp-validation-for="DefendantPhone" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Wereda" class="form-label"></label>
+                            <input asp-for="Wereda" class="form-control" />
+                            <span asp-validation-for="Wereda" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="City" class="form-label"></label>
+                            <input asp-for="City" class="form-control" />
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group form-check mb-3">
+                            <input asp-for="SmsNotificationsEnabled" class="form-check-input" />
+                            <label asp-for="SmsNotificationsEnabled" class="form-check-label"></label>
                         </div>
                     </div>
+                </div>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button type="submit" class="btn btn-primary me-md-2">
-                            <i class="fas fa-save me-2"></i>Submit Case
-                        </button>
-                        <a asp-controller="Dashboard" asp-action="RegistrarDashboard" class="btn btn-secondary">
-                            <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
-                        </a>
+                <!-- Full Width Fields -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group mb-3">
+                            <label asp-for="Description" class="form-label"></label>
+                            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Document" class="form-label"></label>
+                            <input type="file" asp-for="Document" accept=".pdf,.doc,.docx" class="form-control" />
+                            <small class="form-text text-muted">Maximum file size: 50MB. Allowed formats: PDF, DOC,
+                                DOCX</small>
+                            <span asp-validation-for="Document" class="text-danger"></span>
+                        </div>
                     </div>
-                </form>
-            </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-primary me-md-2">
+                        <i class="fas fa-save me-2"></i>Submit Case
+                    </button>
+                    <a asp-controller="Dashboard" asp-action="RegistrarDashboard" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-        <script>
-            // Client-side validation enhancement
-            (function () {
-                'use strict'
-                var forms = document.querySelectorAll('.needs-validation')
-                Array.prototype.slice.call(forms)
-                    .forEach(function (form) {
-                        form.addEventListener('submit', function (event) {
-                            if (!form.checkValidity()) {
-                                event.preventDefault()
-                                event.stopPropagation()
-                            }
-                            form.classList.add('was-validated')
-                        }, false)
-                    })
-            })()
-        </script>
+    <script>
+        (function () {
+            'use strict';
+            var forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+        })();
+    </script>
 }
