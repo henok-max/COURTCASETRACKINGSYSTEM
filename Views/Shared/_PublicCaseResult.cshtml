@@ -45,9 +45,9 @@
 
         <div class="case-body">
             <!-- Status Ribbon -->
-           
+
             <div class="status-ribbon ribbon-@Model.Status.ToLower()">
-               <i class="fas fa-certificate me-2"></i>@TranslateStatus(Model.Status)
+                <i class="fas fa-certificate me-2"></i>@TranslateStatus(Model.Status)
             </div>
 
             <!-- Timeline Section -->
@@ -68,7 +68,7 @@
                     <div class="timeline-content">
                         <h5 class="timeline-title">
                             <i class="fas fa-user-shield me-2"></i>
-                           ተከሳሽ/Defendant
+                            ተከሳሽ/Defendant
                         </h5>
                         <p class="timeline-text">@Model.DefendantName</p>
                     </div>
@@ -79,9 +79,9 @@
                     <div class="timeline-content">
                         <h5 class="timeline-title">
                             <i class="fas fa-calendar-plus me-2"></i>
-                           የተመዘገበበት ቀን/Registration Date
+                            የተመዘገበበት ቀን/Registration Date
                         </h5>
-                        <p class="timeline-text">@Model.RegistrationDate.ToString("dd MMMM yyyy")</p>
+                        <p class="timeline-text">@Model.RegistrationDate.ToString("dd MMM yyyy hh:mm tt")</p>
                     </div>
                 </div>
 
@@ -92,11 +92,11 @@
                         <div class="timeline-content">
                             <h5 class="timeline-title text-warning">
                                 <i class="fas fa-gavel me-2"></i>
-                             ችሎት መስሚያ ቀን/Hearing Date
+                                ችሎት መስሚያ ቀን/Hearing Date
                             </h5>
                             <p class="timeline-text">
                                 <span class="badge bg-warning text-dark">
-                                    @Model.UpcomingHearing.Value.ToString("dd MMM yyyy HH:mm")
+                                    @Model.UpcomingHearing.Value.ToString("dd MMM yyyy hh:mm tt")
                                 </span>
                             </p>
                         </div>
@@ -112,7 +112,7 @@
                                 <i class="fas fa-handshake me-2"></i>
                                 የቀጠሮ ቀን/Appointment Date
                             </h5>
-                            <p class="timeline-text">@Model.AppointmentDate.Value.ToString("dd MMM yyyy")</p>
+                            <p class="timeline-text">@Model.AppointmentDate.Value.ToString("dd MMM yyyy hh:mm tt")</p>
                         </div>
                     </div>
                 }
@@ -124,14 +124,14 @@
                         <div class="timeline-content">
                             <div class="alert alert-info timeline-alert">
                                 <i class="fas fa-info-circle me-2"></i>
-                               ችሎት መስሚያ ቀን የልዎትም። /No upcoming hearings scheduled
+                                ችሎት መስሚያ ቀን የልዎትም። /No upcoming hearings scheduled
                             </div>
                         </div>
                     </div>
                 }
-                 @if (!Model.AppointmentDate.HasValue)
+                @if (!Model.AppointmentDate.HasValue)
                 {
-                     <div class="timeline-item">
+                    <div class="timeline-item">
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
                             <div class="alert alert-info timeline-alert">
@@ -200,14 +200,33 @@
         padding: 0.5rem 1.5rem;
         border-radius: 5px;
         font-weight: 600;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    .ribbon-opened { background: #2ecc71; color: white; }
-    .ribbon-closed { background:rgb(151, 147, 147); color: white; }
-    .ribbon-pending { background: #f1c40f; color: black; }
-    .ribbon-accepted { background: #3498db; color: white; }
-    .ribbon-declined { background:rgb(245, 42, 42); color: white; }
+    .ribbon-opened {
+        background: #2ecc71;
+        color: white;
+    }
+
+    .ribbon-closed {
+        background: rgb(151, 147, 147);
+        color: white;
+    }
+
+    .ribbon-pending {
+        background: #f1c40f;
+        color: black;
+    }
+
+    .ribbon-accepted {
+        background: #3498db;
+        color: white;
+    }
+
+    .ribbon-declined {
+        background: rgb(245, 42, 42);
+        color: white;
+    }
 
     .case-timeline {
         position: relative;
@@ -242,8 +261,13 @@
         z-index: 2;
     }
 
-    .timeline-marker.warning { background: #f1c40f; }
-    .timeline-marker.success { background: #2ecc71; }
+    .timeline-marker.warning {
+        background: #f1c40f;
+    }
+
+    .timeline-marker.success {
+        background: #2ecc71;
+    }
 
     .timeline-content {
         background: #f8f9fa;

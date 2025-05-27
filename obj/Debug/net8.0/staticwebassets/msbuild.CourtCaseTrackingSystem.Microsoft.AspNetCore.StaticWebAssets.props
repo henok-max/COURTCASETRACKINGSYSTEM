@@ -304,6 +304,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\CaseDocuments\befc1003-02b6-4545-b229-b3af03094e0b.pdf))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\CaseDocuments\d68ad849-d3e0-4f7b-a991-7a1eb3ab8c5b.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>CaseDocuments/d68ad849-d3e0-4f7b-a991-7a1eb3ab8c5b.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\CaseDocuments\d68ad849-d3e0-4f7b-a991-7a1eb3ab8c5b.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\CaseDocuments\de8237f0-4e79-4fb2-8c3c-cebfbfad346b.pdf))">
       <SourceType>Package</SourceType>
       <SourceId>CourtCaseTrackingSystem</SourceId>
@@ -1392,6 +1408,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\NewDocuments\1e627348-a550-45fb-9c7b-dd058aa12242.pdf))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\NewDocuments\495e1641-135d-4381-bd19-b7a939080749.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>NewDocuments/495e1641-135d-4381-bd19-b7a939080749.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\NewDocuments\495e1641-135d-4381-bd19-b7a939080749.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\NewDocuments\4e19d1d5-49b5-48e2-8a4b-a751243f2f44.pdf))">
       <SourceType>Package</SourceType>
       <SourceId>CourtCaseTrackingSystem</SourceId>
@@ -1488,6 +1520,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250420-0002_3055142d55bb47fb9cf76df73c615a99.pdf))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250420-0002_382185a8b3074acda58aaebd5af5d77f.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>Summons/Summon_CASE-20250420-0002_382185a8b3074acda58aaebd5af5d77f.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250420-0002_382185a8b3074acda58aaebd5af5d77f.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250509-0001_9679896a78014f69970950feb175458e.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>Summons/Summon_CASE-20250509-0001_9679896a78014f69970950feb175458e.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250509-0001_9679896a78014f69970950feb175458e.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250509-0001_b1e0e186a2de426a925103bccf82422a.pdf))">
       <SourceType>Package</SourceType>
       <SourceId>CourtCaseTrackingSystem</SourceId>
@@ -1519,6 +1583,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250509-0002_44224114768b41f9884fc3ca966f5325.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250509-0002_a99cba2fb4e94ebb93d539afa06f6acf.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>Summons/Summon_CASE-20250509-0002_a99cba2fb4e94ebb93d539afa06f6acf.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250509-0002_a99cba2fb4e94ebb93d539afa06f6acf.pdf))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250513-0001_91067c5820c24b19b4c97ffb14d68397.pdf))">
       <SourceType>Package</SourceType>
@@ -1568,6 +1648,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250513-0003_ab34e163465c4cad8c503fb402c1f3c1.pdf))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250514-0001_7e4c3fd093174697aad66d4c860d358b.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>Summons/Summon_CASE-20250514-0001_7e4c3fd093174697aad66d4c860d358b.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250514-0001_7e4c3fd093174697aad66d4c860d358b.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250514-0002_6ed412aa30f64cbb8cf80666505add97.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>Summons/Summon_CASE-20250514-0002_6ed412aa30f64cbb8cf80666505add97.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250514-0002_6ed412aa30f64cbb8cf80666505add97.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250514-0002_7421161d96b54d1e9f0153f8dc73d5db.pdf))">
       <SourceType>Package</SourceType>
       <SourceId>CourtCaseTrackingSystem</SourceId>
@@ -1616,6 +1728,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250519-0001_c900c5aa43504c4f9f76f6ffed2314ad.pdf))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250521-0001_66ea7ec16b3740ecb62d5a47ebe61658.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>Summons/Summon_CASE-20250521-0001_66ea7ec16b3740ecb62d5a47ebe61658.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250521-0001_66ea7ec16b3740ecb62d5a47ebe61658.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250523-0001_277083dd79e64a42ae789246b3cfd8e2.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>Summons/Summon_CASE-20250523-0001_277083dd79e64a42ae789246b3cfd8e2.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250523-0001_277083dd79e64a42ae789246b3cfd8e2.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250523-0001_69837cf73bb04af4a454506485212aa6.pdf))">
       <SourceType>Package</SourceType>
       <SourceId>CourtCaseTrackingSystem</SourceId>
@@ -1631,6 +1775,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250523-0001_69837cf73bb04af4a454506485212aa6.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250527-0001_b279e90d1c2945f8bae3559e44ec6f09.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>CourtCaseTrackingSystem</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CourtCaseTrackingSystem</BasePath>
+      <RelativePath>Summons/Summon_CASE-20250527-0001_b279e90d1c2945f8bae3559e44ec6f09.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Summons\Summon_CASE-20250527-0001_b279e90d1c2945f8bae3559e44ec6f09.pdf))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\WitnessDocuments\2d507d5d-d8a0-4d5d-bf21-5751074174c8.pdf))">
       <SourceType>Package</SourceType>

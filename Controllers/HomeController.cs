@@ -40,14 +40,15 @@ public class HomeController : Controller
     public async Task<IActionResult> TrackCase(string caseNumber)
     {
         var caseItem = await _context.Cases
-            .Select(c => new {
+            .Select(c => new
+            {
                 c.CaseNumber,
                 c.Title,
                 c.PlaintiffName,
                 c.DefendantName,
                 c.Status,
-                c.HearingDate,
-                c.AppointmentDate,
+                c.HearingDateTime,
+                c.AppointmentDateTime,
                 c.RegistrationDate
             })
             .FirstOrDefaultAsync(c => c.CaseNumber == caseNumber);
@@ -66,8 +67,8 @@ public class HomeController : Controller
             DefendantName = caseItem.DefendantName,
             Status = caseItem.Status,
             RegistrationDate = caseItem.RegistrationDate,
-            UpcomingHearing = caseItem.HearingDate > DateTime.UtcNow ? caseItem.HearingDate : null,
-            AppointmentDate = caseItem.AppointmentDate
+            UpcomingHearing = caseItem.HearingDateTime > DateTime.UtcNow ? caseItem.HearingDateTime : null,
+            AppointmentDate = caseItem.AppointmentDateTime > DateTime.UtcNow ? caseItem.AppointmentDateTime : null
         };
 
         return View("_PublicCaseResult", result);

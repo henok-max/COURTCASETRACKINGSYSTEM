@@ -12,6 +12,7 @@
     var currentUserId = UserManager.GetUserId(User);
 }
 
+
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header bg-primary text-white py-3">
@@ -21,6 +22,13 @@
         </div>
 
         <div class="card-body">
+          @if (TempData["ErrorMessage"] != null)
+        {
+         <div class="alert alert-danger">
+          @TempData["ErrorMessage"]
+          </div>
+        }
+
             <!-- Case Status Banner -->
             <div class="alert @GetStatusAlertClass(Model.Status) mb-4">
                 <h4 class="alert-heading">
@@ -48,7 +56,7 @@
                         @if (Model.SummonDate.HasValue)
                         {
                             <dt class="col-sm-4">Summon Date</dt>
-                            <dd class="col-sm-8">@Model.SummonDate.Value.ToString("dd MMMM yyyy")</dd>
+                            <dd class="col-sm-8">@Model.SummonDate.Value.ToString("dd MMMM yyyy hh:mm tt")</dd>
                         }
 
                         <dt class="col-sm-4">Assigned Judge</dt>
@@ -57,12 +65,11 @@
                             <br><small class="text-muted">@Model.AssignedJudge?.Email</small>
                         </dd>
 
-                       @if (Model.HearingDate.HasValue && Model.HearingDate.Value >= DateTime.Today)
+                       @if (Model.HearingDateTime.HasValue)
                          {
                           <dt class="col-sm-4">Hearing Date</dt>
                              <dd class="col-sm-8 text-success fw-bold">
-                              @Model.HearingDate.Value.ToString("dd MMMM yyyy")
-                                  </dd>
+                                @Model.HearingDateTime.Value.ToLocalTime().ToString("dd MMMM yyyy 'at' hh:mm tt")                                  </dd>
                             }
  
                     </dl>
@@ -168,6 +175,12 @@
                     <small class="text-muted">Allowed formats: PDF, Word (Max 10MB)</small>
                 </form>
             </div>
+        <div class="mt-4" style="margin-left: 75%;">
+            <a asp-action="GenerateReport" asp-route-id="@Model.CaseID" 
+             class="btn btn-success">
+            <i class="fas fa-file-pdf me-2"></i>Generate Case Report
+           </a>
+        </div>
         }
 
 
@@ -211,7 +224,7 @@
                  <input type="hidden" name="id" value="@Model.CaseID" />
                  <div class="form-group">
                 <label for="hearingDate">Hearing Date</label>
-                <input type="date" name="hearingDate" class="form-control" required />
+                <input type="datetime-local" min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" name="hearingDateTime" class="form-control" required />
                  </div>
                  <button type="submit" class="btn btn-success mt-2">
                  <i class="fas fa-door-open me-2"></i>Open Case
@@ -222,6 +235,10 @@
 
               </div>
             }
+
+
+
+
             <div class="mt-4" style="margin-left: 80%;">
                 <a asp-controller="Dashboard" asp-action="JudgeDashboard" class="btn btn-outline-primary">
                  <i class="fas fa-arrow-left me-2"></i>Back to List
@@ -263,9 +280,9 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label asp-for="AppointmentDate" class="form-label"></label>
-                                <input asp-for="AppointmentDate" type="date" class="form-control" 
-                                       min="@DateTime.Today.ToString("yyyy-MM-dd")">
+                                <label asp-for="AppointmentDateTime" class="form-label"></label>
+                                <input asp-for="AppointmentDateTime" type="datetime-local" class="form-control" 
+                                       min="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")">
                             </div>
 
                             <div class="col-md-4">
@@ -434,6 +451,16 @@
             padding-left: 1rem;
             margin-bottom: 1rem;
         }
+        .btn-report {
+        background-color: #28a745;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-report:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+    }
     
 
     </style>
