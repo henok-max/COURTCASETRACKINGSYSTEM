@@ -126,7 +126,7 @@ namespace CourtCaseTrackingSystem.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", "Account");
         }
 
 
@@ -202,14 +202,21 @@ namespace CourtCaseTrackingSystem.Controllers
             return View();
         }
 
+public async Task<IActionResult> Profile()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            return RedirectToAction("Login");
+        }
 
+        return View(user);
+    }
 
 
 
 
 
     }
-
-
 
 }

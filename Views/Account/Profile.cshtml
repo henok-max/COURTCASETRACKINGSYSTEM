@@ -1,0 +1,77 @@
+@using Microsoft.AspNetCore.Identity
+@using CourtCaseTrackingSystem.Models
+@model CourtCaseTrackingSystem.Models.ApplicationUser
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Profile";
+    var roles = await UserManager.GetRolesAsync(Model);
+    string userRole = roles.FirstOrDefault() ?? "N/A";
+}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0"><i class="fas fa-user-circle me-2"></i>User Profile</h3>
+                </div>
+                <div class="card-body">
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4 text-muted">Username:</div>
+                        <div class="col-sm-8">@Model.UserName</div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4 text-muted">Email:</div>
+                        <div class="col-sm-8">@Model.Email</div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4 text-muted">First Name:</div>
+                        <div class="col-sm-8">@Model.FirstName</div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4 text-muted">Second Name:</div>
+                        <div class="col-sm-8">@Model.SecondName</div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-sm-4 text-muted">Role:</div>
+                        <div class="col-sm-8">
+                            <span class="badge bg-success">@userRole</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="text-center mt-4">
+    <a href="@GetDashboardUrl(userRole)" class="btn btn-outline-primary">
+        <i class="fas fa-arrow-left me-1"></i> Back to Dashboard
+    </a>
+</div>
+@functions {
+    public string GetDashboardUrl(string role)
+    {
+        switch (role)
+        {
+            case "Admin":
+                return Url.Action("AdminDashboard", "Dashboard");
+            case "Judge":
+                return Url.Action("JudgeDashboard", "Dashboard");
+            case "Clerk":
+                return Url.Action("ClerkDashboard", "Dashboard");
+                 case "Registrar":
+                return Url.Action("RegistrarDashboard", "Dashboard");
+            default:
+                return Url.Action("Index", "Home"); // fallback
+        }
+    }
+}
+

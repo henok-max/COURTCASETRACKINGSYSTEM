@@ -143,11 +143,16 @@ public class CaseController : Controller
         {
 
             // Remove the document null check
-            string? documentPath = null;
+            string documentPath = null;
             if (model.Document != null)
             {
                 documentPath = await _fileService.SaveDocument(model.Document, DocumentType.Case);
             }
+            else
+{
+    ModelState.AddModelError("Document", "Document is required.");
+    return View(model);
+}
 
             var assignmentResult = await _judgeService.AssignJudge();
             if (!assignmentResult.Succeeded)
@@ -174,7 +179,6 @@ public class CaseController : Controller
                 City = model.City.Trim(),
                 PlaintiffName = model.PlaintiffName.Trim(),
                 DefendantName = model.DefendantName.Trim(),
-                Description = model.Description?.Trim(),
                 Status = "Pending",
                 RegistrationDate = DateTime.UtcNow,
                 DocumentPath = documentPath,
@@ -726,7 +730,7 @@ public class CaseController : Controller
             _logger.LogError(ex, "Failed to send SMS notifications");
         }
     }
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = AdminRole)]
     [HttpGet("sms-logs")]
     public IActionResult GetSmsLogs([FromQuery] string phone = null)
     {
@@ -739,6 +743,7 @@ public class CaseController : Controller
 
         return Ok(logs.OrderByDescending(x => x.Timestamp));
     }
+
     [Authorize(Roles = $"{JudgeRole},{RegistrarRole},{ClerkRole}")]
     public async Task<IActionResult> GenerateReport(int id)
     {

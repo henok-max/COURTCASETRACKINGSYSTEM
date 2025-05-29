@@ -13,6 +13,26 @@
                         <a class="nav-link nav-link-custom me-3" asp-controller="Home" asp-action="Index">
                             <i class="fas fa-sign-in-alt me-1"></i> Home</a>
                     </div>
+                    <div class="dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+        <i class="fas fa-user-circle"></i> Profile
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li><h6 class="dropdown-header">Hello, @User.Identity.Name</h6></li>
+        <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">
+    <i class="fas fa-id-card me-2"></i> Profile
+</a>
+</li>
+        <li>
+            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" class="dropdown-item p-0">
+                <button type="submit" class="btn btn-link dropdown-item">
+                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+                </button>
+            </form>
+        </li>
+    </ul>
+</div>
+
                 </div>
             </div>
         </div>

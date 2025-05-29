@@ -6,6 +6,8 @@ namespace CourtCaseTrackingSystem.Models
         Criminal,
         Family,
         Commercial,
-        Constitutional
+        succession,
+        Property,
+        Others
     }
 }

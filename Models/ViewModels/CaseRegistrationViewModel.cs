@@ -26,9 +26,9 @@ namespace CourtCaseTrackingSystem.ViewModels
         [Required(ErrorMessage = "Case type is required")]
         public CaseType SelectedCaseType { get; set; }
 
-        [Display(Name = "Document")]
-        public IFormFile? Document { get; set; }
-        public string? Description { get; set; } // Optional
+       [Required(ErrorMessage = "Please upload a document.")]
+       [Display(Name = "Document")]
+        public IFormFile Document { get; set; }
         public IEnumerable<SelectListItem> CaseTypeOptions { get; set; } = new List<SelectListItem>();
 
         [Display(Name = "NewDocument")]

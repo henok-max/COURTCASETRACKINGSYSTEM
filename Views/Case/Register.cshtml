@@ -18,13 +18,13 @@
                     <!-- Left Column -->
                     <div class="col-md-6">
                         <div class="form-group mb-3">
-                            <label asp-for="Title" class="form-label"></label>
+                            <label asp-for="Title" class="form-label">Title/ርእስ</label>
                             <input asp-for="Title" class="form-control" />
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label asp-for="SelectedCaseType" class="form-label"></label>
+                            <label asp-for="SelectedCaseType" class="form-label">CaseType/የክስ አይነት</label>
                             <select asp-for="SelectedCaseType" asp-items="Model.CaseTypeOptions" class="form-select">
                                 <option value="">Select Case Type</option>
                             </select>
@@ -32,13 +32,13 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label asp-for="PlaintiffName" class="form-label"></label>
+                            <label asp-for="PlaintiffName" class="form-label">PlaintiffName/ከሳሽ</label>
                             <input asp-for="PlaintiffName" class="form-control" />
                             <span asp-validation-for="PlaintiffName" class="text-danger"></span>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label asp-for="PlaintiffPhone" class="form-label"></label>
+                            <label asp-for="PlaintiffPhone" class="form-label">PlaintiffPhone/የከሳሽስልክ</label>
                             <input asp-for="PlaintiffPhone" class="form-control" placeholder="+251911223344" />
                             <span asp-validation-for="PlaintiffPhone" class="text-danger"></span>
                         </div>
@@ -47,25 +47,25 @@
                     <!-- Right Column -->
                     <div class="col-md-6">
                         <div class="form-group mb-3">
-                            <label asp-for="DefendantName" class="form-label"></label>
+                            <label asp-for="DefendantName" class="form-label">DefendantName/ተከሳሽ</label>
                             <input asp-for="DefendantName" class="form-control" />
                             <span asp-validation-for="DefendantName" class="text-danger"></span>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label asp-for="DefendantPhone" class="form-label"></label>
+                            <label asp-for="DefendantPhone" class="form-label">DefendantPhone/የተከሳሽስልክ</label>
                             <input asp-for="DefendantPhone" class="form-control" placeholder="+251922334455" />
                             <span asp-validation-for="DefendantPhone" class="text-danger"></span>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label asp-for="Wereda" class="form-label"></label>
+                            <label asp-for="Wereda" class="form-label">Wereda/ወረዳ</label>
                             <input asp-for="Wereda" class="form-control" />
                             <span asp-validation-for="Wereda" class="text-danger"></span>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label asp-for="City" class="form-label"></label>
+                            <label asp-for="City" class="form-label">City/ከተማ</label>
                             <input asp-for="City" class="form-control" />
                             <span asp-validation-for="City" class="text-danger"></span>
                         </div>
@@ -80,12 +80,7 @@
                 <!-- Full Width Fields -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="form-group mb-3">
-                            <label asp-for="Description" class="form-label"></label>
-                            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
-                            <span asp-validation-for="Description" class="text-danger"></span>
-                        </div>
-
+           
                         <div class="form-group mb-4">
                             <label asp-for="Document" class="form-label"></label>
                             <input type="file" asp-for="Document" accept=".pdf,.doc,.docx" class="form-control" />

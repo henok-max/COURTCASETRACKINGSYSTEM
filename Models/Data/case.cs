@@ -30,8 +30,7 @@ namespace CourtCaseTrackingSystem.Models
     [Required]
     public required string DefendantName { get; set; }
 
-    public string? DocumentPath { get; set; } // Make nullable
-    public string? Description { get; set; }
+    public required string DocumentPath { get; set; } // Make nullable
 
     public string Status { get; set; } = "Pending";
     [Column(TypeName = "datetime2")]

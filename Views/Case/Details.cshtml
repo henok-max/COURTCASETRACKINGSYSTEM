@@ -10,6 +10,10 @@
 @{
     ViewData["Title"] = "Case Details";
     var currentUserId = UserManager.GetUserId(User);
+    // FIX: Properly initialize userRole
+    var currentUser = await UserManager.GetUserAsync(User);
+    var roles = await UserManager.GetRolesAsync(currentUser);
+    string userRole = roles.FirstOrDefault() ?? "N/A";
 }
 
 
@@ -239,12 +243,11 @@
 
 
 
-            <div class="mt-4" style="margin-left: 80%;">
-                <a asp-controller="Dashboard" asp-action="JudgeDashboard" class="btn btn-outline-primary">
-                 <i class="fas fa-arrow-left me-2"></i>Back to List
-                 </a>
-
-            </div>
+            <div class="text-center mt-4">
+            <a href="@GetDashboardUrl(userRole)" class="btn btn-outline-primary">
+             <i class="fas fa-arrow-left me-1"></i> Back to Dashboard
+                </a>
+              </div>
          <!-- Update Case Details Section -->
       <div class="mt-4 border-top pt-3">
     <!-- Button to Open Modal -->
@@ -395,6 +398,18 @@
 
 
 @functions {
+
+    public string GetDashboardUrl(string role)
+    {
+        switch (role)
+        {
+            case "Admin": return Url.Action("AdminDashboard", "Dashboard");
+            case "Judge": return Url.Action("JudgeDashboard", "Dashboard");
+            case "Clerk": return Url.Action("ClerkDashboard", "Dashboard");
+            case "Registrar": return Url.Action("RegistrarDashboard", "Dashboard");
+            default: return Url.Action("Index", "Home");
+        }
+    }
     string GetStatusAlertClass(string status)
     {
         return status switch
