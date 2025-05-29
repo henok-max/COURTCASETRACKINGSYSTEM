@@ -27,7 +27,7 @@
          <div class="alert alert-danger">
           @TempData["ErrorMessage"]
           </div>
-        }
+         }
 
             <!-- Case Status Banner -->
             <div class="alert @GetStatusAlertClass(Model.Status) mb-4">
@@ -276,6 +276,8 @@
                                 <select asp-for="Status" class="form-select">
                                     <option value="Opened">Opened</option>
                                     <option value="Closed">Closed</option>
+                                    <option value="Suspend">Suspend</option>
+
                                 </select>
                             </div>
 

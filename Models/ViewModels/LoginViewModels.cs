@@ -5,8 +5,10 @@ namespace CourtCaseTrackingSystem.ViewModels
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Username/Email")]
-        public required string Username { get; set; }
+        [Display(Name = "Username or Email")]
+        public required string UsernameOrEmail { get; set; }
+
+
 
         [Required]
         [DataType(DataType.Password)]

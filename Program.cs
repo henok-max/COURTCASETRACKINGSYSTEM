@@ -47,17 +47,17 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("DefenseUpload", policy => 
+    options.AddPolicy("DefenseUpload", policy =>
         policy.RequireRole("Judge", "Clerk"));
 });
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("WitnessUpload", policy => 
+    options.AddPolicy("WitnessUpload", policy =>
         policy.RequireRole("Judge", "Clerk"));
 });
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("NewUpload", policy => 
+    options.AddPolicy("NewUpload", policy =>
         policy.RequireRole("Registrar"));
 });
 builder.WebHost.ConfigureKestrel(options =>
@@ -65,6 +65,7 @@ builder.WebHost.ConfigureKestrel(options =>
     options.Limits.MaxRequestBodySize = 50 * 1024 * 1024; // 50MB
 });
 
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 // 5. MVC Services
 builder.Services.AddControllersWithViews();

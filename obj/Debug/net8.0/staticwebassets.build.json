@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "C0l2ZFKF1tv62NbLT2avtjJ89OubJ1/tpXB38CdHR98=",
+  "Hash": "4KMyszzjGKgcmRIZmtiZ7N/FIvYcpgf0VGVBBS+4Hfc=",
   "Source": "CourtCaseTrackingSystem",
   "BasePath": "_content/CourtCaseTrackingSystem",
   "Mode": "Default",
@@ -1651,6 +1651,25 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\DefenseDocuments\\09a0b608-78c7-44a5-a84d-e933a2be8f0e.pdf",
+      "SourceId": "CourtCaseTrackingSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\",
+      "BasePath": "_content/CourtCaseTrackingSystem",
+      "RelativePath": "DefenseDocuments/09a0b608-78c7-44a5-a84d-e933a2be8f0e.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\DefenseDocuments\\09a0b608-78c7-44a5-a84d-e933a2be8f0e.pdf"
+    },
+    {
       "Identity": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\DefenseDocuments\\18f96fc4-6c34-439c-a835-43fbfd07df2b.pdf",
       "SourceId": "CourtCaseTrackingSystem",
       "SourceType": "Discovered",
@@ -1706,6 +1725,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\DefenseDocuments\\a8d7b027-9d8c-4c9e-9de0-d36c3f9b541e.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\DefenseDocuments\\fc444323-c933-4994-a288-85b506f61bff.docx",
+      "SourceId": "CourtCaseTrackingSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\",
+      "BasePath": "_content/CourtCaseTrackingSystem",
+      "RelativePath": "DefenseDocuments/fc444323-c933-4994-a288-85b506f61bff.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\DefenseDocuments\\fc444323-c933-4994-a288-85b506f61bff.docx"
     },
     {
       "Identity": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\favicon.ico",
@@ -2960,6 +2998,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Summons\\Summon_CASE-20250420-0001_6ca1d66ea87e42afa903fc57be26a097.pdf"
+    },
+    {
+      "Identity": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250420-0001_afc60c7ee7404bde82a2d848c88d2559.pdf",
+      "SourceId": "CourtCaseTrackingSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\",
+      "BasePath": "_content/CourtCaseTrackingSystem",
+      "RelativePath": "Summons/Summon_CASE-20250420-0001_afc60c7ee7404bde82a2d848c88d2559.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Summons\\Summon_CASE-20250420-0001_afc60c7ee7404bde82a2d848c88d2559.pdf"
     },
     {
       "Identity": "C:\\Users\\HMCTC\\CourtCaseTrackingSystem\\wwwroot\\Summons\\Summon_CASE-20250420-0002_3055142d55bb47fb9cf76df73c615a99.pdf",

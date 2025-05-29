@@ -59,6 +59,11 @@ public class UserManagementController : Controller
 
         // Create user
         var result = await _userManager.CreateAsync(user, model.Password);
+        if (result.Succeeded)
+        {
+            user.EmailConfirmed = true;
+            await _userManager.UpdateAsync(user); // This actually saves EmailConfirmed = true
+        }
         if (!result.Succeeded)
         {
             AddErrors(result);
